@@ -1,6 +1,6 @@
 ---
 app-id: com.usebottles.bottles
-runtime: org.gnome.Sdk
+runtime: org.gnome.Platform
 runtime-version: '3.38'
 sdk: org.gnome.Sdk
 add-extensions:
