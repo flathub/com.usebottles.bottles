@@ -80,4 +80,5 @@ modules:
   sources:
   - type: git
     url: https://github.com/bottlesdevs/Bottles
-    tag: 2.1.2
+    branch: refresh
+    commit: 9d07d6cfa163b4718e3a8f6b492fd4ee7445492a
