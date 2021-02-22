@@ -81,4 +81,4 @@ modules:
   - type: git
     url: https://github.com/bottlesdevs/Bottles
     branch: refresh
-    commit: 9d07d6cfa163b4718e3a8f6b492fd4ee7445492a
+    commit: af299fa4594e0d6fb14a3bdc6eefba40d2c6ae66
