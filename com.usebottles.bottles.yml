@@ -81,4 +81,16 @@ modules:
   - type: git
     url: https://github.com/bottlesdevs/Bottles
     branch: refresh
-    commit: af299fa4594e0d6fb14a3bdc6eefba40d2c6ae66
+- name: libhandy
+  builddir: true
+  buildsystem: meson
+  config-opts: 
+  - -Dglade_catalog=disabled
+  - -Dintrospection=enabled
+  - -Dexamples=false
+  - -Dtests=false
+  sources:
+  - type: git
+    url: https://gitlab.gnome.org/GNOME/libhandy
+    tag: 1.0.0
+
