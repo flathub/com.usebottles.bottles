@@ -93,5 +93,5 @@ modules:
   sources:
   - type: git
     url: https://gitlab.gnome.org/GNOME/libhandy
-    tag: 1.0.0
-
+    tag: 1.1.90
+    commit: 89a1610b62533c9d6c5267cfac0108e724df25ba
