@@ -36,6 +36,12 @@ finish-args:
 - --filesystem=~/wineprefixes:ro
 - --filesystem=~/.Bottles:ro
 - --filesystem=~/.local/share/bottles:create
+- --filesystem=xdg-desktop
+- --filesystem=xdg-documents
+- --filesystem=xdg-pictures
+- --filesystem=xdg-music
+- --filesystem=xdg-videos
+- --filesystem=xdg-download
 /* For optical drive access */
 - --device=all
 - --filesystem=host
