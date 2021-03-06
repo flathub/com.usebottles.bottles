@@ -28,7 +28,6 @@ command: bottles
 finish-args:
 - --allow=multiarch
 - --share=network
-- --device=all
 - --share=ipc
 - --socket=fallback-x11
 - --socket=pulseaudio
