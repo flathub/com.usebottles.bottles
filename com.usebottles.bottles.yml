@@ -81,7 +81,7 @@ modules:
   - type: git
     url: https://github.com/bottlesdevs/Bottles
     branch: unstable
-    commit: 62114b5a6b3bee27e437b19c8fe918cc9279e277
+    commit: 39c357e2c9a85c71e3848c99f7cb2ca53fcf4552
 - name: libhandy
   builddir: true
   buildsystem: meson
