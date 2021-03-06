@@ -36,7 +36,6 @@ finish-args:
 - --filesystem=~/wineprefixes:ro
 - --filesystem=~/.Bottles:ro
 - --filesystem=~/.local/share/bottles:create
-/* For optical drive access */
 - --device=all
 - --filesystem=host
 x-compat-i386-opts:
