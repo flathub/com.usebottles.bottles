@@ -89,4 +89,3 @@ modules:
   - type: git
     url: https://github.com/bottlesdevs/Bottles
     tag: 3.0.6
-    commit: 4840533a752aac633f25bcdb6cae6fa15d3bf47e
