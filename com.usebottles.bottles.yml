@@ -27,6 +27,7 @@ add-extensions:
 command: bottles
 finish-args:
 - --allow=multiarch
+- --device=all
 - --share=network
 - --share=ipc
 - --socket=fallback-x11
@@ -36,8 +37,13 @@ finish-args:
 - --filesystem=~/wineprefixes:ro
 - --filesystem=~/.Bottles:ro
 - --filesystem=~/.local/share/bottles:create
+- --filesystem=xdg-desktop
+- --filesystem=xdg-documents
+- --filesystem=xdg-pictures
+- --filesystem=xdg-music
+- --filesystem=xdg-videos
+- --filesystem=xdg-download
 - --device=all
-- --filesystem=host
 x-compat-i386-opts:
   prepend-pkg-config-path: "/app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig"
   ldflags: "-L/app/lib32"
