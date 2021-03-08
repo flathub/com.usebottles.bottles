@@ -42,6 +42,8 @@ finish-args:
 - --filesystem=xdg-music
 - --filesystem=xdg-videos
 - --filesystem=xdg-download
+- --filesystem=/run/media
+- --filesystem=/media
 - --device=all
 x-compat-i386-opts:
   prepend-pkg-config-path: "/app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig"
