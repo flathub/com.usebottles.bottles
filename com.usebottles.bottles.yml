@@ -31,7 +31,6 @@ finish-args:
 - --share=ipc
 - --socket=fallback-x11
 - --socket=pulseaudio
-- --socket=session-bus
 - --filesystem=~/Games:ro
 - --filesystem=~/wineprefixes:ro
 - --filesystem=~/.Bottles:ro
@@ -46,6 +45,9 @@ finish-args:
 - --filesystem=/media
 - --device=all
 - --system-talk-name=org.freedesktop.UDisks2
+- --talk-name=org.freedesktop.Notifications
+- --talk-name=org.gtk.vfs
+- --talk-name=org.gtk.vfs.*
 x-compat-i386-opts:
   prepend-pkg-config-path: "/app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig"
   ldflags: "-L/app/lib32"
