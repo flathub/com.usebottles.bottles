@@ -97,4 +97,4 @@ modules:
   sources:
   - type: git
     url: https://github.com/bottlesdevs/Bottles
-    tag: 3.1.0
+    tag: 3.1.1
