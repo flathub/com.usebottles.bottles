@@ -1,16 +1,16 @@
 ---
 app-id: com.usebottles.bottles
 runtime: org.gnome.Platform
-runtime-version: '3.38'
+runtime-version: '40'
 sdk: org.gnome.Sdk
 add-extensions:
   org.gnome.Platform.Compat.i386:
     directory: lib/i386-linux-gnu
-    version: '3.38'
+    version: '40'
     
   org.gnome.Platform.Compat.i386.Debug:
     directory: lib/debug/lib/i386-linux-gnu
-    version: "3.38"
+    version: "40"
     no-autodownload: true
 
   org.freedesktop.Platform.GL32:
@@ -78,19 +78,6 @@ modules:
   sources:
   - type: file
     path: ld.so.conf
-- name: libhandy
-  builddir: true
-  buildsystem: meson
-  config-opts: 
-  - -Dglade_catalog=disabled
-  - -Dintrospection=enabled
-  - -Dexamples=false
-  - -Dtests=false
-  sources:
-  - type: git
-    url: https://gitlab.gnome.org/GNOME/libhandy
-    tag: 1.1.90
-    commit: 89a1610b62533c9d6c5267cfac0108e724df25ba
 - name: bottles
   builddir: true
   buildsystem: meson
