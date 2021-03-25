@@ -79,19 +79,6 @@ modules:
   sources:
   - type: file
     path: ld.so.conf
-- name: libhandy
-  builddir: true
-  buildsystem: meson
-  config-opts: 
-  - -Dglade_catalog=disabled
-  - -Dintrospection=enabled
-  - -Dexamples=false
-  - -Dtests=false
-  sources:
-  - type: git
-    url: https://gitlab.gnome.org/GNOME/libhandy
-    tag: 1.1.90
-    commit: 89a1610b62533c9d6c5267cfac0108e724df25ba
 - name: bottles
   builddir: true
   buildsystem: meson
