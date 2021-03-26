@@ -87,3 +87,214 @@ modules:
     url: https://github.com/bottlesdevs/Bottles
     branch: unstable
     commit: 36a7536fa7766c06afb2d685edf82909841087d7
+
+ # Multilib runtime for wine
+
+  - name: vkd3d
+    sources: &vkd3d_sources
+      - type: archive
+        url: "https://dl.winehq.org/vkd3d/source/vkd3d-1.2.tar.xz"
+        sha256: b04b030fcbf0f2dacc933c76c74b449bffef1fc1a18d50254ef1ad3e380df96b
+    modules:
+
+      - name: SPIRV-Headers
+        buildsystem: cmake-ninja
+        sources:
+          - type: archive
+            url: "https://github.com/KhronosGroup/SPIRV-Headers/archive/1.5.4.tar.gz"
+            sha256: fc026b6566167f6db03dc48779f0f986f9ff8c93ed651a557f28cfbe2dff4ede
+
+  - name: vkd3d-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    sources: *vkd3d_sources
+
+  - name: vulkan-tools
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DGLSLANG_INSTALL_DIR=/app
+      - -DVULKAN_HEADERS_INSTALL_DIR=/app
+      - -DCMAKE_BUILD_TYPE=Release
+    sources:
+      - type: archive
+        url: "https://github.com/KhronosGroup/Vulkan-Tools/archive/sdk-1.2.170.0.tar.gz"
+        sha256: 0408ab3d2020e2e3a622be0dcac8d223cafe9a1123b4dff67a0ecc4e758718b4
+
+  - name: openldap
+    config-opts: &openldap_config_opts
+      - --disable-slapd
+      - --disable-slurpd
+      - --disable-bdb
+      - --disable-hdb
+    cleanup: &openldap_cleanup
+      - /bin
+    sources: &openldap_sources
+      - type: archive
+        url: "https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.58.tgz"
+        sha256: 57b59254be15d0bf6a9ab3d514c1c05777b02123291533134a87c94468f8f47b
+
+  - name: openldap-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    config-opts: *openldap_config_opts
+    cleanup: *openldap_cleanup
+    sources: *openldap_sources
+
+
+  - name: glu
+    config-opts: &glu_config_opts
+      - --disable-static
+    sources: &glu_sources
+      - type: archive
+        url: "https://mesa.freedesktop.org/archive/glu/glu-9.0.1.tar.xz"
+        sha256: fb5a4c2dd6ba6d1c21ab7c05129b0769544e1d68e1e3b0ffecb18e73c93055bc
+
+  - name: glu-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    config-opts: *glu_config_opts
+    sources: *glu_sources
+
+
+  - name: eudev
+    cleanup: &eudev_cleanup
+      - /bin
+      - /sbin
+      - /lib*/udev
+    post-install:
+      - udevadm hwdb --update
+    sources: &eudev_sources
+      - type: archive
+        url: "https://github.com/gentoo/eudev/archive/v3.2.10.tar.gz"
+        sha256: 6492629da4024d2d21bb1a79d724e013d4152956099a5c63b09c8ee4da7f9b2b
+
+  - name: eudev-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    cleanup: *eudev_cleanup
+    sources: *eudev_sources
+
+
+  - name: OpenCL
+    buildsystem: simple
+    build-commands:
+      - cp -av CL $FLATPAK_DEST/include/
+    sources:
+      - type: git
+        url: "https://github.com/KhronosGroup/OpenCL-Headers.git"
+        commit: 23710f1b99186065c1768fc3098ba681adc0f253
+
+
+  - name: libpcap
+    config-opts: &libpcap_config_opts
+      - --enable-ipv6
+    sources: &libcap_sources
+      - type: archive
+        url: "https://www.tcpdump.org/release/libpcap-1.9.1.tar.gz"
+        sha256: 635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094
+
+  - name: libpcap-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    config-opts: *libpcap_config_opts
+    sources: *libcap_sources
+
+
+  - name: v4l2-utils
+    config-opts: &v4l2_config_opts
+      - --disable-v4l-utils
+      - --disable-qv4l2
+      - --disable-qvidcap
+    sources: &v4l2_sources
+      - type: archive
+        url: "https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.20.0.tar.bz2"
+        sha256: 956118713f7ccb405c55c7088a6a2490c32d54300dd9a30d8d5008c28d3726f7
+
+  - name: v4l2-utils-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    config-opts: *v4l2_config_opts
+    sources: *v4l2_sources
+
+
+  - name: libgphoto2
+    sources: &libgphoto2_sources
+      - type: archive
+        url: "https://github.com/gphoto/libgphoto2/archive/libgphoto2-2_5_27-release.tar.gz"
+        sha256: 9ac1ab84fc5070d40194181efd0775044220c8d5cdee830386d528710e864ec9
+      - type: script
+        dest-filename: autogen.sh
+        commands:
+          - autoreconf -ifv
+
+  - name: libgphoto2-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    sources: *libgphoto2_sources
+
+
+  - name: libcapi20
+    sources: &libcapi20_sources
+      - type: archive
+        url: "http://deb.debian.org/debian/pool/main/libc/libcapi20-3/libcapi20-3_3.27.orig.tar.bz2"
+        md5: 439620a9221c0222c35fb3e7a3973700
+
+  - name: libcapi20-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    sources: *libcapi20_sources
+
+
+  - name: gsm
+    build-options:
+      make-install-args:
+        - GSM_INSTALL_LIB=/app/lib
+    make-install-args: &gsm_make_install_args
+      - INSTALL_ROOT=/app
+      - GSM_INSTALL_INC=/app/include
+    no-autogen: true
+    cleanup: &gsm_cleanup
+      - /bin
+    sources: &gsm_sources
+      - type: archive
+        url: "http://www.quut.com/gsm/gsm-1.0.18.tar.gz"
+        sha256: 04f68087c3348bf156b78d59f4d8aff545da7f6e14f33be8f47d33f4efae2a10
+      - type: patch
+        path: patches/gsm-makefile.patch
+
+  - name: gsm-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+      make-install-args:
+        - GSM_INSTALL_LIB=/app/lib32
+    make-install-args: *gsm_make_install_args
+    no-autogen: true
+    cleanup: *gsm_cleanup
+    sources: *gsm_sources
+
+
+  - name: FAudio
+    buildsystem: cmake-ninja
+    config-opts: &faudio_config_opts
+      - -DFFMPEG=ON
+    sources: &faudio_sources
+      - type: archive
+        url: "https://github.com/FNA-XNA/FAudio/archive/21.03.05.tar.gz"
+        sha256: c396c7c196e47bcb054cdc94cd3f7f39751fe27774de7eb9749a9608883ad5eb
+
+  - name: FAudio-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    buildsystem: cmake-ninja
+    config-opts: *faudio_config_opts
+    sources: *faudio_sources
