@@ -86,4 +86,4 @@ modules:
   - type: git
     url: https://github.com/bottlesdevs/Bottles
     branch: unstable
-    commit: 67dd174b1f437e91be53e2f4f9a967a2f3860e44
+    commit: f19b5c8792fd5618bfc4ba5c1a08d66271c67da6
