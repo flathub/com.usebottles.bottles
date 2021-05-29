@@ -22,6 +22,7 @@ finish-args:
   - --filesystem=xdg-download
   - --filesystem=/run/media
   - --filesystem=/media
+  - --filesystem=xdg-run/gvfsd
   - --device=all
   - --system-talk-name=org.freedesktop.UDisks2
   - --talk-name=org.freedesktop.Notifications
@@ -91,4 +92,4 @@ modules:
     sources:
     - type: git
       url: https://github.com/bottlesdevs/Bottles
-      commit: d628de5f33a7d0e93dac550354894d05a38df40c
+      commit: aff34491bc7d58f83b19af90dd8b7cfab3274a98
