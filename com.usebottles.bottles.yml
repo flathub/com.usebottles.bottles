@@ -85,6 +85,8 @@ modules:
     sources:
     - type: file
       path: ld.so.conf
+    - type: patch
+      path: 0001-Flatpak-notice.patch
 
   - name: bottles
     builddir: true
