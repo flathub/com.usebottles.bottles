@@ -1,3 +1,4 @@
 {
-    "only-arches": ["x86_64"]
+    "only-arches": ["x86_64"],
+    "end-of-life": "We are exiting Flathub, please move to one of the supported packages.",
 }
