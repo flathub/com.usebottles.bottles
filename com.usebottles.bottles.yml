@@ -132,24 +132,6 @@ modules:
   - type: archive
     url: https://github.com/kjd/idna/archive/v3.2.tar.gz
     sha256: 7104cb016a7b2c0d53195e6088abb5cdce03aa0c1b0874a4863c216f647abd29
-    
-- name: python-validators
-  buildsystem: simple
-  build-commands:
-  - python3 setup.py install --prefix=/app --root=/
-  sources:
-  - type: archive
-    url: https://github.com/kvesteri/validators/archive/0.18.1.tar.gz
-    sha256: 69341d7336faee65524550c42dca45e87f28c44fcb271502b6b330daf20ca6ab
-    
-- name: python-decorator
-  buildsystem: simple
-  build-commands:
-  - python3 setup.py install --prefix=/app --root=/
-  sources:
-  - type: archive
-    url: https://github.com/micheles/decorator/archive/4.4.2.tar.gz
-    sha256: 5f53613d90a820df490ffeb782a66910dd992d31434aaa5f610ac7e0817d3822
 
 - name: bottles
   builddir: true
@@ -157,4 +139,4 @@ modules:
   sources:
   - type: git
     url: https://github.com/bottlesdevs/Bottles
-    commit: dd3c585bb890f5f8d4bd923ca011c5a14b1c1ef1
+    commit: 3f634c83ff2ed0439e1b872b32d0e6776f124abe
