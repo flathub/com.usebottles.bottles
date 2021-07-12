@@ -13,7 +13,7 @@ finish-args:
 - "--filesystem=~/Games:ro"
 - "--filesystem=~/wineprefixes:ro"
 - "--filesystem=~/.Bottles:ro"
-- "--filesystem=~/.local/share/bottles:create"
+- "--filesystem=~/.local/share/bottles:ro"
 - "--filesystem=xdg-desktop"
 - "--filesystem=xdg-documents"
 - "--filesystem=xdg-pictures"
@@ -132,6 +132,75 @@ modules:
   - type: archive
     url: https://github.com/kjd/idna/archive/v3.2.tar.gz
     sha256: 7104cb016a7b2c0d53195e6088abb5cdce03aa0c1b0874a4863c216f647abd29
+    
+- name: cabextract
+  buildsystem: autotools
+  sources:
+  - type: archive
+    url: https://www.cabextract.org.uk/cabextract-1.9.1.tar.gz
+    sha256: afc253673c8ef316b4d5c29cc4aa8445844bee14afffbe092ee9469405851ca7
+    
+- name: vkd3d
+  sources:
+  - type: archive
+    url: https://dl.winehq.org/vkd3d/source/vkd3d-1.2.tar.xz
+    sha256: b04b030fcbf0f2dacc933c76c74b449bffef1fc1a18d50254ef1ad3e380df96b
+  modules:
+  - name: SPIRV-Headers
+    buildsystem: cmake-ninja
+    sources:
+    - type: archive
+      url: https://github.com/KhronosGroup/SPIRV-Headers/archive/1.5.4.tar.gz
+      sha256: fc026b6566167f6db03dc48779f0f986f9ff8c93ed651a557f28cfbe2dff4ede
+      
+- name: vkd3d-32bit
+  build-options:
+    arch:
+      x86_64:
+        prepend-pkg-config-path: "/app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig"
+        ldflags: "-L/app/lib32"
+        append-path: "/usr/lib/sdk/toolchain-i386/bin"
+        env:
+          CC: i686-unknown-linux-gnu-gcc
+          CXX: i686-unknown-linux-gnu-g++
+        libdir: "/app/lib32"
+  sources:
+  - type: archive
+    url: https://dl.winehq.org/vkd3d/source/vkd3d-1.2.tar.xz
+    sha256: b04b030fcbf0f2dacc933c76c74b449bffef1fc1a18d50254ef1ad3e380df96b
+    
+- name: vulkan-tools
+  buildsystem: cmake-ninja
+  config-opts:
+  - "-DGLSLANG_INSTALL_DIR=/app"
+  - "-DVULKAN_HEADERS_INSTALL_DIR=/app"
+  - "-DCMAKE_BUILD_TYPE=Release"
+  sources:
+  - type: archive
+    url: https://github.com/KhronosGroup/Vulkan-Tools/archive/refs/tags/v1.2.162.tar.gz
+    sha256: 98a3a00471da65df833b4ffeb1ab29ec1d169d5feab54270cf4cd8f50f82e682
+    
+- name: openldap
+  config-opts:
+  - "--disable-slapd"
+  - "--disable-slurpd"
+  - "--disable-bdb"
+  - "--disable-hdb"
+  cleanup:
+  - "/bin"
+  sources:
+  - type: archive
+    url: https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.55.tgz
+    sha256: 97357bd6ba8ff73d204c1f8208c5e6ab97d60c9e779f989057aa1229bbe98434
+    
+- name: OpenCL
+  buildsystem: simple
+  build-commands:
+  - cp -av CL $FLATPAK_DEST/include/
+  sources:
+  - type: git
+    url: https://github.com/KhronosGroup/OpenCL-Headers.git
+    commit: 9fac4e9866a961f66bdd72fa2bff50145512f972
 
 - name: bottles
   builddir: true
@@ -139,4 +208,4 @@ modules:
   sources:
   - type: git
     url: https://github.com/bottlesdevs/Bottles
-    commit: d11ec7441d26ff01a9f5e756693c58b8a364e578
+    commit: f83acf91f46d2721ae345e76c0c2f8697be2b673
