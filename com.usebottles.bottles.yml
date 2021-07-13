@@ -52,7 +52,7 @@ add-extensions:
     autodelete: false
     no-autodownload: true
     download-if: have-intel-gpu
-x-compat-i386-opts:
+x-compat-i386-opts: &compat_i386_opts
   prepend-pkg-config-path: "/app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig"
   ldflags: "-L/app/lib32"
   append-path: "/usr/lib/sdk/toolchain-i386/bin"
