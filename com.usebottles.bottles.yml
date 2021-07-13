@@ -47,12 +47,15 @@ add-extensions:
     autodelete: false
     add-ld-path: lib
     merge-dirs: vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors;lib/dri;lib/d3d;vulkan/explicit_layer.d
+    download-if: active-gl-driver
+    enable-if: active-gl-driver
+    
   org.freedesktop.Platform.VAAPI.Intel:
     directory: lib/dri/intel-vaapi-driver
     autodelete: false
     no-autodownload: true
     download-if: have-intel-gpu
-x-compat-i386-opts:
+x-compat-i386-opts: &compat_i386_opts
   prepend-pkg-config-path: "/app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig"
   ldflags: "-L/app/lib32"
   append-path: "/usr/lib/sdk/toolchain-i386/bin"
@@ -270,14 +273,6 @@ modules:
   - type: archive
     url: https://github.com/FNA-XNA/FAudio/archive/21.03.05.tar.gz
     sha256: c396c7c196e47bcb054cdc94cd3f7f39751fe27774de7eb9749a9608883ad5eb
-- name: OpenCL
-  buildsystem: simple
-  build-commands:
-  - cp -av CL $FLATPAK_DEST/include/
-  sources:
-  - type: git
-    url: https://github.com/KhronosGroup/OpenCL-Headers.git
-    commit: 9fac4e9866a961f66bdd72fa2bff50145512f972
 
   - name: gamemode
     buildsystem: meson
@@ -306,4 +301,4 @@ modules:
   sources:
   - type: git
     url: https://github.com/bottlesdevs/Bottles
-    commit: f27de5d14d629ca76c2d225df0b41209dd564ee3
+    commit: c76dc6314dc0ce371c0141daeb647fcb305c0ae4
