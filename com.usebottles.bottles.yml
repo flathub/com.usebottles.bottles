@@ -375,4 +375,4 @@ modules:
     sources:
       - type: git
         url: 'https://github.com/bottlesdevs/Bottles'
-        tag: 2021.7.28-1-treviso
+        tag: 2021.7.28-treviso
