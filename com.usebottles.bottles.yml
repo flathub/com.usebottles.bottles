@@ -1,7 +1,7 @@
 id: com.usebottles.bottles
 sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
-runtime-version: '40'
+runtime-version: '41'
 command: bottles
 
 finish-args:
@@ -20,15 +20,15 @@ finish-args:
 add-extensions:
   org.gnome.Platform.Compat.i386:
     directory: lib/i386-linux-gnu
-    version: '40'
+    version: '41'
   org.gnome.Platform.Compat.i386.Debug:
     directory: lib/debug/lib/i386-linux-gnu
-    version: '40'
+    version: '41'
     no-autodownload: true
   org.freedesktop.Platform.GL32:
     directory: lib/i386-linux-gnu/GL
     version: '1.4'
-    versions: 20.08;1.4
+    versions: 21.08;1.4
     subdirectories: true
     no-autodownload: true
     autodelete: false
