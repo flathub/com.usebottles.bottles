@@ -302,7 +302,7 @@ modules:
 id: com.usebottles.bottles
 sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
-runtime-version: '40'
+runtime-version: '41'
 command: bottles
 
 finish-args:
@@ -335,15 +335,15 @@ finish-args:
 add-extensions:
   org.gnome.Platform.Compat.i386:
     directory: lib/i386-linux-gnu
-    version: '40'
+    version: '41'
   org.gnome.Platform.Compat.i386.Debug:
     directory: lib/debug/lib/i386-linux-gnu
-    version: '40'
+    version: '41'
     no-autodownload: true
   org.freedesktop.Platform.GL32:
     directory: lib/i386-linux-gnu/GL
     version: '1.4'
-    versions: 20.08;1.4
+    versions: 21.08;1.4
     subdirectories: true
     no-autodownload: true
     autodelete: false
@@ -676,4 +676,4 @@ modules:
     sources:
     - type: git
       url: https://github.com/bottlesdevs/Bottles
-      commit: 11df051f15e30ef30cdddaa962b3ddfb9f7a0d9f
+      commit: 5495081b8c22f994d14875e6b282bd904c82b6e6
