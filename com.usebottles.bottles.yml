@@ -378,5 +378,6 @@ modules:
     builddir: true
     buildsystem: meson
     sources:
-    - type: dir
-      path: .
+    - type: git
+      url: https://github.com/bottlesdevs/Bottles
+      commit: 5495081b8c22f994d14875e6b282bd904c82b6e6
