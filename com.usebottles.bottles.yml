@@ -107,7 +107,7 @@ modules:
     sources:
       - type: archive
         url: 'https://github.com/urllib3/urllib3/archive/1.26.7.tar.gz'
-        sha256: 4987c65554f7a2dbf30c18fd48778ef124af6fab771a377103da0585e2336ece
+        sha256: 87f1b873ec9f7e0dc6e5bc2f9aa69279c73295a007fbd1ac421954a4679d7923
 
   - name: python-chardet
     buildsystem: simple
