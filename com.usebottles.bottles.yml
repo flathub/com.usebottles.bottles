@@ -205,8 +205,8 @@ modules:
     sources:
       - type: archive
         url: >-
-          https://github.com/KhronosGroup/Vulkan-Tools/archive/refs/tags/v1.2.194.tar.gz
-        sha256: bf7eea7c4eecaa705666c926273fc43ebf2f9661e69321d0f4b02f95c1f6dd3e
+          https://github.com/KhronosGroup/Vulkan-Tools/archive/refs/tags/v1.2.192.tar.gz
+        sha256: 98a3a00471da65df833b4ffeb1ab29ec1d169d5feab54270cf4cd8f50f82e682
 
   - name: openldap
     config-opts:
