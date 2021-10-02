@@ -1,3 +1,4 @@
+---
 id: com.usebottles.bottles
 sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
@@ -87,8 +88,8 @@ modules:
       - python3 setup.py install --prefix=/app --root=/
     sources:
       - type: archive
-        url: 'https://github.com/yaml/pyyaml/archive/5.4.1.tar.gz'
-        sha256: 75f966559c5f262dfc44da0f958cc2aa18953ae5021f2c3657b415c5a370045f
+        url: 'https://github.com/yaml/pyyaml/archive/5.4.1.1.tar.gz'
+        sha256: e79dbaae8d9253aad313ca68cf65193f810260fb44fe0508625c7e9561eb57f2
 
   - name: python-requests
     buildsystem: simple
@@ -105,8 +106,8 @@ modules:
       - python3 setup.py install --prefix=/app --root=/
     sources:
       - type: archive
-        url: 'https://github.com/urllib3/urllib3/archive/1.26.6.tar.gz'
-        sha256: ab4582b44fbe33f3e3fc838e3d90dde7f68fa3697aeb075962e0ba4b93020327
+        url: 'https://github.com/urllib3/urllib3/archive/1.26.7.tar.gz'
+        sha256: 4987c65554f7a2dbf30c18fd48778ef124af6fab771a377103da0585e2336ece
 
   - name: python-chardet
     buildsystem: simple
@@ -204,8 +205,8 @@ modules:
     sources:
       - type: archive
         url: >-
-          https://github.com/KhronosGroup/Vulkan-Tools/archive/refs/tags/v1.2.162.tar.gz
-        sha256: 98a3a00471da65df833b4ffeb1ab29ec1d169d5feab54270cf4cd8f50f82e682
+          https://github.com/KhronosGroup/Vulkan-Tools/archive/refs/tags/v1.2.194.tar.gz
+        sha256: bf7eea7c4eecaa705666c926273fc43ebf2f9661e69321d0f4b02f95c1f6dd3e
 
   - name: openldap
     config-opts:
@@ -230,8 +231,8 @@ modules:
     sources:
       - type: archive
         url: >-
-          https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.55.tgz
-        sha256: 97357bd6ba8ff73d204c1f8208c5e6ab97d60c9e779f989057aa1229bbe98434
+          https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.5.6.tgz
+        sha256: 3f21423a9d3bd9774a4494e2d4fbc830ac68d63a87d4c2934eff800954cac11f
 
   - name: openldap64
     config-opts:
@@ -249,8 +250,8 @@ modules:
     sources:
       - type: archive
         url: >-
-          https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.55.tgz
-        sha256: 97357bd6ba8ff73d204c1f8208c5e6ab97d60c9e779f989057aa1229bbe98434
+          https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.5.6.tgz
+        sha256: 3f21423a9d3bd9774a4494e2d4fbc830ac68d63a87d4c2934eff800954cac11f
 
   - name: faudio32
     buildsystem: cmake-ninja
@@ -268,8 +269,8 @@ modules:
       - '-DGSTREAMER=ON'
     sources:
       - type: archive
-        url: 'https://github.com/FNA-XNA/FAudio/archive/21.03.05.tar.gz'
-        sha256: c396c7c196e47bcb054cdc94cd3f7f39751fe27774de7eb9749a9608883ad5eb
+        url: 'https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.10.tar.gz'
+        sha256: eca3e2cc148f9b25e8ce61153f3f552a385cdaa903f691af0a53932cc10cfb39
 
   - name: patool
     buildsystem: simple
@@ -327,8 +328,8 @@ modules:
       - '-DGSTREAMER=ON'
     sources:
       - type: archive
-        url: 'https://github.com/FNA-XNA/FAudio/archive/21.03.05.tar.gz'
-        sha256: c396c7c196e47bcb054cdc94cd3f7f39751fe27774de7eb9749a9608883ad5eb
+        url: 'https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.10.tar.gz'
+        sha256: eca3e2cc148f9b25e8ce61153f3f552a385cdaa903f691af0a53932cc10cfb39
 
   - name: gamemode
     buildsystem: meson
@@ -341,8 +342,8 @@ modules:
     sources: &gamemode_sources
       - type: archive
         url: >-
-          https://github.com/FeralInteractive/gamemode/releases/download/1.6/gamemode-1.6.tar.xz
-        sha256: ede17eb042c1c87f7b35bfe96a00560afaea086f685d25bb3964d794b0af9c80
+          https://github.com/FeralInteractive/gamemode/releases/download/1.6.1/gamemode-1.6.1.tar.xz
+        sha256: 10c2a3f142eae472f5a09e42616e38c666c05b25ca3e61e562a543bb3fda66c5
 
   - name: gamemode-32bit
     build-options:
