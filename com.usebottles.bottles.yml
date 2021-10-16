@@ -358,8 +358,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2021.10.14-treviso-1
-        commit: 4828c89a0ca6ed8c82e94d0ed21a05bc12f97944
+        tag: 2021.10.14-treviso-2
+        commit: 59b119e1a7fca748e08dddcefa69677258e5cbf9
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
