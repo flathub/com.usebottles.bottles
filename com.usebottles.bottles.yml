@@ -135,6 +135,15 @@ modules:
         url: https://github.com/kjd/idna/archive/v3.2.tar.gz
         sha256: 7104cb016a7b2c0d53195e6088abb5cdce03aa0c1b0874a4863c216f647abd29
 
+  - name: python-markdown
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py install --prefix=/app --root=/
+    sources:
+      - type: archive
+        url: https://github.com/Python-Markdown/markdown/archive/refs/tags/3.3.4.tar.gz
+        sha256: dcba963ea6d47d845aaa5d169911052985eec90d50267850c5c4c4fb4b05eff7
+
   - name: cabextract
     buildsystem: autotools
     sources:
@@ -358,7 +367,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2021.10.14-treviso-2
+        tag: 2021.10.28-treviso
         commit: 59b119e1a7fca748e08dddcefa69677258e5cbf9
         x-checker-data:
           type: json
