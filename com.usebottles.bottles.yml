@@ -136,6 +136,15 @@ modules:
         url: 'https://github.com/certifi/python-certifi/archive/2021.05.30.tar.gz'
         sha256: 9bffc4826ac0308591e26852a0404548a9e4e30b7214ebfd86360cd214f51dda
 
+  - name: python-markdown
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py install --prefix=/app --root=/
+    sources:
+      - type: archive
+        url: https://github.com/Python-Markdown/markdown/archive/refs/tags/3.3.4.tar.gz
+        sha256: dcba963ea6d47d845aaa5d169911052985eec90d50267850c5c4c4fb4b05eff7
+        
   - name: python-idna
     buildsystem: simple
     build-commands:
@@ -368,4 +377,4 @@ modules:
     sources:
     - type: git
       url: https://github.com/bottlesdevs/Bottles
-      commit: 0e2b9450857ed9a53de0d10c17941b3899256aac
+      commit: fc7e25e8b62238f341c6cb6007572bbfa5d2ed7e
