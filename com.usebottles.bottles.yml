@@ -361,6 +361,12 @@ modules:
     config-opts: *gamemode_config_opts
     sources: *gamemode_sources
 
+  - name: gamemoderun
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 data/gamemoderun -t /app/bin
+    sources: *gamemode_sources
+
   - name: bottles
     builddir: true
     buildsystem: meson
