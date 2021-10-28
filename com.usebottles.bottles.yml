@@ -341,10 +341,11 @@ modules:
 
   - name: gamemode
     buildsystem: meson
- "type": "git",
-  "url": "https://github.com/FeralInteractive/gamemode",
-  "commit": "b11d2912e280acb87d9ad114d6c7cd8846c4ef02",
-  "tag": "1.6.1"
+    sources: &gamemode_sources
+  type": "git",
+  "url": https://github.com/FeralInteractive/gamemode,
+  tag": "1.6.1",
+  commit": b11d2912e280acb87d9ad114d6c7cd8846c4ef02
 
   - name: gamemode-32bit
     build-options:
