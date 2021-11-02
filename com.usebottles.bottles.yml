@@ -277,8 +277,8 @@ modules:
       - -DGSTREAMER=ON
     sources:
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.10.tar.gz
-        sha256: eca3e2cc148f9b25e8ce61153f3f552a385cdaa903f691af0a53932cc10cfb39
+        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.11.tar.gz
+        sha256: 1389100ca132e06455ad7e4e765a045d9821c234f6e388bef6a0c8d610ce36d1
 
   - name: patool
     buildsystem: simple
@@ -336,8 +336,8 @@ modules:
       - -DGSTREAMER=ON
     sources:
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.10.tar.gz
-        sha256: eca3e2cc148f9b25e8ce61153f3f552a385cdaa903f691af0a53932cc10cfb39
+        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.11.tar.gz
+        sha256: 1389100ca132e06455ad7e4e765a045d9821c234f6e388bef6a0c8d610ce36d1
 
   - name: gamemode
     buildsystem: meson
@@ -372,4 +372,4 @@ modules:
     sources:
     - type: git
       url: https://github.com/bottlesdevs/Bottles
-      commit: 88ee724caa2556eae81715af1b3adad921f8c24d
+      commit: dbd36e44d7b64621701d2d5e414e6532b71e2126
