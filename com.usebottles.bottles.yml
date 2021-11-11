@@ -372,4 +372,4 @@ modules:
     sources:
     - type: git
       url: https://github.com/bottlesdevs/Bottles
-      commit: ca09d7bbeedab18608524d72d47d6cb767969daf
+      commit: 793716167b22dcb648e6a4f07d59561ce8b11f67
