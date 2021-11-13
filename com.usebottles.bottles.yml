@@ -365,7 +365,7 @@ modules:
     build-commands:
       - install -Dm755 data/gamemoderun -t /app/bin
     sources: *gamemode_sources
-
+    
   - name: bottles
     builddir: true
     buildsystem: meson
@@ -373,12 +373,3 @@ modules:
     - type: git
       url: https://github.com/bottlesdevs/Bottles
       commit: f74c2c3dd77a1768c3ac0cf7211ed540df7f27d4
-
-
-  - name: bottles
-    builddir: true
-    buildsystem: meson
-    sources:
-    - type: git
-      url: https://github.com/bottlesdevs/Bottles
-      commit: beda58eea0b712dc7609b5a86603054b823e768e
