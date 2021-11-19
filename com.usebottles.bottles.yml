@@ -380,3 +380,4 @@ modules:
           tag-query: .tag_name
           version-query: $tag | sub("-treviso"; "")
           timestamp-query: .published_at
+
