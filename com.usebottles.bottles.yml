@@ -373,11 +373,10 @@ modules:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
         tag: 2021.11.28-treviso
-        commit: f1e22097959a2fc838318f059600c00a687f3d8e
+        commit: 0538b7e5b93b753071199be185b5ed51641954ff
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
           tag-query: .tag_name
           version-query: $tag | sub("-treviso"; "")
           timestamp-query: .published_at
-
