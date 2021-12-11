@@ -37,11 +37,6 @@ add-extensions:
     merge-dirs: vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors;lib/dri;lib/d3d;vulkan/explicit_layer.d
     download-if: active-gl-driver
     enable-if: active-gl-driver
-  org.freedesktop.Platform.VAAPI.Intel:
-    directory: lib/dri/intel-vaapi-driver
-    autodelete: false
-    no-autodownload: true
-    download-if: have-intel-gpu
 
 x-compat-i386-opts: &compat_i386_opts
   prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
@@ -166,13 +161,10 @@ modules:
         buildsystem: cmake-ninja
         sources:
           - type: archive
-            url: https://github.com/KhronosGroup/SPIRV-Headers/archive/1.5.4.tar.gz
-            sha256: fc026b6566167f6db03dc48779f0f986f9ff8c93ed651a557f28cfbe2dff4ede
+            url: https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/1.5.4.raytracing.fixed.tar.gz
+            sha256: df2ad2520be4d95a479fa248921065885bbf435a658349a7fc164ad7b26b68c6
 
   - name: vkd3d-32bit
-    config-opts:
-      - --disable-static
-      - --enable-shared
     build-options:
       prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
       ldflags: -L/app/lib32
@@ -202,8 +194,8 @@ modules:
           no-debuginfo: true
         sources:
           - type: archive
-            url: https://github.com/KhronosGroup/SPIRV-Headers/archive/1.5.4.tar.gz
-            sha256: fc026b6566167f6db03dc48779f0f986f9ff8c93ed651a557f28cfbe2dff4ede
+            url: https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/1.5.4.raytracing.fixed.tar.gz
+            sha256: df2ad2520be4d95a479fa248921065885bbf435a658349a7fc164ad7b26b68c6
 
   - name: vulkan-tools
     buildsystem: cmake-ninja
