@@ -215,51 +215,32 @@ modules:
         url: >-
           https://github.com/KhronosGroup/Vulkan-Tools/archive/refs/tags/v1.2.162.tar.gz
         sha256: 98a3a00471da65df833b4ffeb1ab29ec1d169d5feab54270cf4cd8f50f82e682
-
-  - name: openldap
+    
+  - name: mesa-glu
     config-opts:
-      - --disable-static
-      - --enable-shared
-      - --disable-slapd
-      - --disable-slurpd
-      - --disable-bdb
-      - --disable-hdb
-    cleanup:
-      - /bin
-    build-options:
-      prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
-      ldflags: -L/app/lib32
-      prepend-path: /usr/lib/sdk/toolchain-i386/bin
-      env:
-        CC: i686-unknown-linux-gnu-gcc
-        CXX: i686-unknown-linux-gnu-g++
-      libdir: /app/lib32
-      strip: true
-      no-debuginfo: true
+      - '--disable-static'
     sources:
       - type: archive
-        url: >-
-          https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.55.tgz
-        sha256: 97357bd6ba8ff73d204c1f8208c5e6ab97d60c9e779f989057aa1229bbe98434
-
-  - name: openldap64
-    config-opts:
-      - --disable-static
-      - --enable-shared
-      - --disable-slapd
-      - --disable-slurpd
-      - --disable-bdb
-      - --disable-hdb
-    cleanup:
-      - /bin
+        url: https://mesa.freedesktop.org/archive/glu/glu-9.0.2.tar.xz
+        sha256: 6e7280ff585c6a1d9dfcdf2fca489251634b3377bfc33c29e4002466a38d02d4
+        
+  - name: mesa-glu-32bit
     build-options:
-      strip: true
-      no-debuginfo: true
+      arch:
+        x86_64:
+          prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
+          ldflags: '-L/app/lib32'
+          append-path: /usr/lib/sdk/toolchain-i386/bin
+          env:
+            CC: i686-unknown-linux-gnu-gcc
+            CXX: i686-unknown-linux-gnu-g++
+          libdir: /app/lib32
+    config-opts:
+      - '--disable-static'
     sources:
       - type: archive
-        url: >-
-          https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.55.tgz
-        sha256: 97357bd6ba8ff73d204c1f8208c5e6ab97d60c9e779f989057aa1229bbe98434
+        url: https://mesa.freedesktop.org/archive/glu/glu-9.0.2.tar.xz
+        sha256: 6e7280ff585c6a1d9dfcdf2fca489251634b3377bfc33c29e4002466a38d02d4
 
   - name: faudio32
     buildsystem: cmake-ninja
@@ -279,6 +260,86 @@ modules:
       - type: archive
         url: https://github.com/FNA-XNA/FAudio/archive/21.03.05.tar.gz
         sha256: c396c7c196e47bcb054cdc94cd3f7f39751fe27774de7eb9749a9608883ad5eb
+  
+  - name: OpenCL
+    buildsystem: simple
+    build-commands:
+      - cp -av CL $FLATPAK_DEST/include/
+    sources:
+      - type: git
+        url: https://github.com/KhronosGroup/OpenCL-Headers.git
+        commit: 9fac4e9866a961f66bdd72fa2bff50145512f972
+        
+  - name: libpcap
+    config-opts:
+      - '--enable-ipv6'
+    sources:
+      - type: archive
+        url: https://www.tcpdump.org/release/libpcap-1.10.1.tar.gz
+        sha256: ed285f4accaf05344f90975757b3dbfe772ba41d1c401c2648b7fa45b711bdd4
+        
+  - name: libpcap-32bit
+    build-options:
+      arch:
+        x86_64:
+          prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
+          ldflags: '-L/app/lib32'
+          append-path: /usr/lib/sdk/toolchain-i386/bin
+          env:
+            CC: i686-unknown-linux-gnu-gcc
+            CXX: i686-unknown-linux-gnu-g++
+          libdir: /app/lib32
+    config-opts:
+      - '--enable-ipv6'
+    sources:
+      - type: archive
+        url: https://www.tcpdump.org/release/libpcap-1.10.1.tar.gz
+        sha256: ed285f4accaf05344f90975757b3dbfe772ba41d1c401c2648b7fa45b711bdd4
+        
+  - name: openldap
+    config-opts:
+      - '--disable-static'
+      - '--enable-shared'
+      - '--disable-slapd'
+      - '--disable-slurpd'
+      - '--disable-bdb'
+      - '--disable-hdb'
+    cleanup:
+      - /bin
+    build-options:
+      prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
+      ldflags: '-L/app/lib32'
+      prepend-path: /usr/lib/sdk/toolchain-i386/bin
+      env:
+        CC: i686-unknown-linux-gnu-gcc
+        CXX: i686-unknown-linux-gnu-g++
+      libdir: /app/lib32
+      strip: true
+      no-debuginfo: true
+    sources:
+      - type: archive
+        url: >-
+          https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.5.6.tgz
+        sha256: 3f21423a9d3bd9774a4494e2d4fbc830ac68d63a87d4c2934eff800954cac11f
+        
+  - name: openldap64
+    config-opts:
+      - '--disable-static'
+      - '--enable-shared'
+      - '--disable-slapd'
+      - '--disable-slurpd'
+      - '--disable-bdb'
+      - '--disable-hdb'
+    cleanup:
+      - /bin
+    build-options:
+      strip: true
+      no-debuginfo: true
+    sources:
+      - type: archive
+        url: >-
+          https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.5.6.tgz
+        sha256: 3f21423a9d3bd9774a4494e2d4fbc830ac68d63a87d4c2934eff800954cac11f
 
   - name: patool
     buildsystem: simple
@@ -365,6 +426,25 @@ modules:
     build-commands:
       - install -Dm755 data/gamemoderun -t /app/bin
     sources: *gamemode_sources
+  
+  - name: vte
+    buildsystem: meson
+    config-opts:
+    - "-Ddocs=false"
+    - "-Dvapi=false"
+    sources:
+    - type: archive
+      url: https://gitlab.gnome.org/GNOME/vte/-/archive/0.66.2/vte-0.66.2.tar.gz
+      sha256: a486e389e3d16f903ed6f27d9513c2a44bff5945a12af4fcfe48ce00992c42ab
+    
+- name: EasyTerm
+    buildsystem: simple
+    build-commands:
+    - python3 setup.py install --prefix=/app --root=/
+    sources:
+    - type: archive
+      url: https://github.com/bottlesdevs/EasyTerm/archive/refs/tags/0.1.8.tar.gz
+      sha256: 1383395a2a42ec7b5453a3a24b500fc8da0413ac645a81f397e49ae96abc9d5a
     
   - name: bottles
     builddir: true
