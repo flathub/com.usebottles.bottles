@@ -159,7 +159,7 @@ modules:
       - type: archive
         url: https://github.com/KhronosGroup/Vulkan-Tools/archive/refs/tags/v1.2.186.tar.gz
         sha256: 8ba0e21e8de0b70d31985d251d11150efee71266875262798784e9d1ec9b717b
-  
+
   - name: p7zip
     no-autogen: true
     make-args:
@@ -224,7 +224,6 @@ modules:
     build-commands:
       - install -Dm755 data/gamemoderun -t /app/bin
     sources: *gamemode_sources
-  
   # Libraries
   # ----------------------------------------------------------------------------
   - name: compat
@@ -299,7 +298,6 @@ modules:
         x86_64: *compat_i386_opts
     config-opts: *mesa_glu_opts
     sources: *mesa_glu_sources
-  
   - name: openldap
     config-opts: &openldap_opts
       - --disable-slapd
@@ -395,7 +393,7 @@ modules:
       - type: archive
         url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.08.tar.gz
         sha256: 42a3a295da44721c63f06fcbf5edf8077a42fdb78313b9e1c065afad12df8063
-  
+
   - name: FAudio-32bit
     build-options:
       arch:
@@ -448,8 +446,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2021.12.14-treviso
-        commit: bf76d861d36e9427f1050c89996dbdc1c589b8fe
+        tag: 2021.12.14-treviso-1
+        commit: 6df87489cb7add82c3992065749f13f8176ad3b5
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
