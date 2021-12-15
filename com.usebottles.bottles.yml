@@ -224,6 +224,13 @@ modules:
     build-commands:
       - install -Dm755 data/gamemoderun -t /app/bin
     sources: *gamemode_sources
+    
+  - name: xdpyinfo
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://github.com/freedesktop/xdpyinfo/archive/refs/tags/xdpyinfo-1.3.2.tar.gz
+        sha256: 4c6942cb55e965f1192c0e2efc78429e2f4281cc2bc185d6ea09d609f32c51de
   
   # Libraries
   # ----------------------------------------------------------------------------
@@ -448,4 +455,4 @@ modules:
     sources:
     - type: git
       url: https://github.com/bottlesdevs/Bottles
-      commit: b4da9b938c1be5c04883086c296ace610a67b017
+      commit: 8c5e92b6266d6aeb478dbabdda2658bb909c6bc3
