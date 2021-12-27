@@ -444,8 +444,8 @@ modules:
       - cp -a * /app/etc/runtime/
     sources:
       - type: archive
-        url: https://github.com/bottlesdevs/runtime/releases/download/0.1/runtime.tar.gz
-        sha256: 4e66f600c5da2086ad2d0fe073ddb97896566baca348bf48173e536b090bf538
+        url: https://github.com/bottlesdevs/runtime/releases/download/0.2/runtime.tar.gz
+        sha256: 2eb1881869ed5f0bb76cd3961a61d3ca6882df942f1c15b55055a1bc4804e0d5
 
   - name: bottles
     builddir: true
@@ -453,8 +453,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2021.12.14-treviso-4
-        commit: 83b77f124286930600f5a6a1e5db2cc110c553df
+        tag: 2021.12.28-treviso
+        commit: 20082d512a528887fa8e0d464cdcb08ed31d0ab6
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
