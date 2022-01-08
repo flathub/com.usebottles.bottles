@@ -1,0 +1,27 @@
+From 49277b68766d12f0848fd616971b173d410b1d53 Mon Sep 17 00:00:00 2001
+From: mirkobrombin <send@mirko.pm>
+Date: Thu, 6 Jan 2022 18:19:10 +0100
+Subject: [PATCH] fix #873
+
+---
+ src/backend/dependency.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/backend/dependency.py b/src/backend/dependency.py
+index 7598934..a536b79 100644
+--- a/src/backend/dependency.py
++++ b/src/backend/dependency.py
+@@ -406,9 +406,9 @@ class DependencyManager:
+             environment=False,
+             comunicate=True
+         )
+-        uuid = uuid.strip()
+ 
+         if uuid:
++            uuid = uuid.strip()
+             logging.info(
+                 "Uninstalling [%s] from bottle: [%s]." % (
+                     file_name,
+-- 
+2.33.1
+
