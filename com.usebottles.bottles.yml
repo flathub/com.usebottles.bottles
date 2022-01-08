@@ -461,4 +461,6 @@ modules:
           tag-query: .tag_name
           version-query: $tag | sub("-treviso"; "")
           timestamp-query: .published_at
+      - type: patch # remove before release 2022.1.14
+        path: 0001-fix-873.patch
 
