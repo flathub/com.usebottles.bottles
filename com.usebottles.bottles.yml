@@ -5,6 +5,7 @@ runtime-version: '41'
 command: bottles
 
 finish-args:
+  - --allow=devel
   - --allow=multiarch
   - --share=network
   - --share=ipc
@@ -453,4 +454,4 @@ modules:
     sources:
     - type: git
       url: https://github.com/bottlesdevs/Bottles
-      commit: e1f2bcd0874d10a6872563ce8c40915953b4e610
+      commit: a5c0da43f47362f9e0d85f1e606cc6f862c5c851
