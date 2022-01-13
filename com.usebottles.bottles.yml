@@ -5,6 +5,7 @@ runtime-version: '41'
 command: bottles
 
 finish-args:
+  - --allow=devel
   - --allow=multiarch
   - --share=network
   - --share=ipc
@@ -453,14 +454,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2021.12.28-treviso
-        commit: 20082d512a528887fa8e0d464cdcb08ed31d0ab6
+        tag: 2022.1.14-trento
+        commit: 5fbfc7b2c4801fb431ae7dbcfc216215439cea65
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
           tag-query: .tag_name
-          version-query: $tag | sub("-treviso"; "")
+          version-query: $tag | sub("-trento"; "")
           timestamp-query: .published_at
-      - type: patch # remove before release 2022.1.14
-        path: 0001-fix-873.patch
 
