@@ -9,8 +9,8 @@ finish-args:
   - --allow=multiarch
   - --share=network
   - --share=ipc
+  - --socket=x11
   - --socket=wayland
-  - --socket=fallback-x11
   - --socket=pulseaudio
   - --device=all
   - --system-talk-name=org.freedesktop.UDisks2
@@ -454,8 +454,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2022.1.14-trento
-        commit: 5fbfc7b2c4801fb431ae7dbcfc216215439cea65
+        tag: 2022.1.14-trento-2
+        commit: 0f7f7a49fb37ea3d19a93eecaad5d0f798307126
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
