@@ -224,14 +224,13 @@ modules:
     build-commands:
       - install -Dm755 data/gamemoderun -t /app/bin
     sources: *gamemode_sources
-    
   - name: xdpyinfo
     buildsystem: autotools
     sources:
       - type: archive
         url: https://github.com/freedesktop/xdpyinfo/archive/refs/tags/xdpyinfo-1.3.2.tar.gz
         sha256: 4c6942cb55e965f1192c0e2efc78429e2f4281cc2bc185d6ea09d609f32c51de
-        
+
   # Libraries
   # ----------------------------------------------------------------------------
   - name: compat
@@ -454,8 +453,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2022.1.14-trento-4
-        commit: 25b7996c7bde65ad643b6b9db7ee005b3e7e654e
+        tag: 2022.1.28-trento
+        commit: 0a5e07875608ed87d47edd5c69b744b989567f34
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
