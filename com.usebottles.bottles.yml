@@ -16,6 +16,7 @@ finish-args:
   - --system-talk-name=org.freedesktop.UDisks2
   - --talk-name=org.freedesktop.Notifications
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib32
+  - --env=PATH=/app/bin:/app/utils/bin:/usr/bin
   - --require-version=1.1.2
 
 add-extensions:
@@ -39,6 +40,16 @@ add-extensions:
     merge-dirs: vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors;lib/dri;lib/d3d;vulkan/explicit_layer.d
     download-if: active-gl-driver
     enable-if: active-gl-driver
+  
+  com.valvesoftware.Steam.Utility:
+    subdirectories: true
+    directory: utils
+    version: stable
+    versions: stable;beta;test
+    add-ld-path: lib
+    merge-dirs: bin
+    no-autodownload: true
+    autodelete: true
 
 x-compat-i386-opts: &compat_i386_opts
   prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
@@ -444,8 +455,8 @@ modules:
       - cp -a * /app/etc/runtime/
     sources:
       - type: archive
-        url: https://github.com/bottlesdevs/runtime/releases/download/0.2/runtime.tar.gz
-        sha256: 2eb1881869ed5f0bb76cd3961a61d3ca6882df942f1c15b55055a1bc4804e0d5
+        url: https://github.com/bottlesdevs/runtime/releases/download/0.3/runtime.tar.gz
+        sha256: 37ccbe9afdc642e7b1fb3e0016c55fdccf5e221066ea96d630a5876c90792fe6
 
   - name: bottles
     builddir: true
@@ -453,8 +464,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2022.1.28-trento-4
-        commit: e5d2ff77461b9667dd69e893eb39fe80a8ede682
+        tag: 2022.2.14-trento
+        commit: 288d7bf91510cddc3308e96574bd6d139ead2df1
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
