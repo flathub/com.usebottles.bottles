@@ -455,8 +455,8 @@ modules:
       - cp -a * /app/etc/runtime/
     sources:
       - type: archive
-        url: https://github.com/bottlesdevs/runtime/archive/refs/tags/0.3.tar.gz
-        sha256: b62b9c818c935d30e7a76467a2672e3a8aa40a45c5613b9329222e5dedfc195f
+        url: https://github.com/bottlesdevs/runtime/releases/download/0.3/runtime.tar.gz
+        sha256: 37ccbe9afdc642e7b1fb3e0016c55fdccf5e221066ea96d630a5876c90792fe6
 
   - name: bottles
     builddir: true
