@@ -75,6 +75,9 @@ cleanup:
   - '*.la'
   - '*.a'
 
+cleanup-commands:
+  - mkdir -p /app/utils
+
 modules:
 
   # Python modules
