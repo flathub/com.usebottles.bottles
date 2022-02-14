@@ -75,6 +75,9 @@ cleanup:
   - '*.la'
   - '*.a'
 
+cleanup-commands:
+  - mkdir -p /app/utils
+
 modules:
 
   # Python modules
@@ -464,4 +467,4 @@ modules:
     sources:
     - type: git
       url: https://github.com/bottlesdevs/Bottles
-      commit: f4b21ea5af0f1e732107beab4d223835466a8a35
+      commit: 97bd234bf8ed6e1b4add73d9821412dc3eb19455
