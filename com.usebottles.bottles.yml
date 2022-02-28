@@ -2,6 +2,8 @@ id: com.usebottles.bottles
 sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
 runtime-version: '41'
+base: org.winehq.Wine
+base-version: 'stable-21.08'
 command: bottles
 
 finish-args:
@@ -516,4 +518,4 @@ modules:
     sources:
     - type: git
       url: https://github.com/bottlesdevs/Bottles
-      commit: d6853058b2fc2e96096fae0b9468bc3b4ea1221b
+      commit: f931c78d108d72327590990225dcafc566160968
