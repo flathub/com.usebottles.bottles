@@ -200,19 +200,6 @@ modules:
 
   # Libraries
   # ----------------------------------------------------------------------------
-  - name: compat
-    buildsystem: simple
-    build-commands:
-      - mkdir -p /app/lib/i386-linux-gnu /app/lib/debug/lib/i386-linux-gnu
-
-  - name: i386-libs
-    buildsystem: simple
-    build-commands:
-      - mkdir -p /app/lib/i386-linux-gnu
-      - install -Dm644 ld.so.conf -t /app/etc/
-    sources:
-      - type: file
-        path: ld.so.conf
 
   - name: mesa-glu
     config-opts: &mesa_glu_opts
