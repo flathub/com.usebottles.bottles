@@ -18,8 +18,8 @@ finish-args:
   - --system-talk-name=org.freedesktop.UDisks2
   - --talk-name=org.freedesktop.Notifications
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib32
-  - --env=PATH=/app/bin:/app/utils/bin:/usr/bin
-  - --require-version=1.1.2
+  - --env=PATH=/app/bin:/app/utils/bin:/usr/bin:/usr/lib/extensions/vulkan/MangoHud/bin/
+  - --require-version=1.1.22
 
 inherit-extensions:
   - org.freedesktop.Platform.GL32
@@ -215,26 +215,6 @@ modules:
         x86_64: *compat_i386_opts
     config-opts: *mesa_glu_opts
     sources: *mesa_glu_sources
-  - name: openldap
-    config-opts: &openldap_opts
-      - --disable-slapd
-      - --disable-slurpd
-      - --disable-bdb
-      - --disable-hdb
-    cleanup: &openldap_cleanup
-      - /bin
-    sources: &openldap_sources
-      - type: archive
-        url: https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.0.tgz
-        sha256: b71c580eac573e9aba15d95f33dd4dd08f2ed4f0d7fc09e08ad4be7ed1e41a4f
-
-  - name: openldap-32bit
-    build-options:
-      arch:
-        x86_64: *openldap_opts
-    config-opts: *openldap_opts
-    cleanup: *openldap_cleanup
-    sources: *openldap_sources
 
   - name: OpenCL
     buildsystem: simple
@@ -381,8 +361,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2022.2.28-trento-4
-        commit: 70086ce0aa80e4a92190bfd4eb135548226fae40
+        tag: 2022.3.14-trento
+        commit: a4cdbccdfc703db77a9847a0f16e9f5deba971bf
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
