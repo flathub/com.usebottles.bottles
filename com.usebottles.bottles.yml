@@ -18,7 +18,7 @@ finish-args:
   - --system-talk-name=org.freedesktop.UDisks2
   - --talk-name=org.freedesktop.Notifications
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib32
-  - --env=PATH=/app/bin:/app/utils/bin:/usr/bin
+  - --env=PATH=/app/bin:/app/utils/bin:/usr/bin:/usr/lib/extensions/vulkan/MangoHud/bin/
   - --require-version=1.1.2
 
 inherit-extensions:
@@ -228,35 +228,6 @@ modules:
         x86_64: *compat_i386_opts
     config-opts: *mesa_glu_opts
     sources: *mesa_glu_sources
-  - name: openldap
-    config-opts: &openldap_opts
-      - --disable-slapd
-      - --disable-slurpd
-      - --disable-bdb
-      - --disable-hdb
-    cleanup: &openldap_cleanup
-      - /bin
-    sources: &openldap_sources
-      - type: archive
-        url: https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.0.tgz
-        sha256: b71c580eac573e9aba15d95f33dd4dd08f2ed4f0d7fc09e08ad4be7ed1e41a4f
-
-  - name: openldap-32bit
-    build-options:
-      arch:
-        x86_64: *openldap_opts
-    config-opts: *openldap_opts
-    cleanup: *openldap_cleanup
-    sources: *openldap_sources
-
-  - name: OpenCL
-    buildsystem: simple
-    build-commands:
-      - cp -av CL $FLATPAK_DEST/include/
-    sources:
-      - type: git
-        url: https://github.com/KhronosGroup/OpenCL-Headers.git
-        commit: e3cd57376dada061bc6d5f9edfce2ea631b81214
 
   - name: libpcap
     config-opts: &libpcap_opts
@@ -284,18 +255,6 @@ modules:
       arch:
         x86_64: *compat_i386_opts
     sources: *libcapi20_sources
-
-  - name: libbsd
-    sources: &libbsd_sources
-      - type: archive
-        url: https://libbsd.freedesktop.org/releases/libbsd-0.10.0.tar.xz
-        sha256: 34b8adc726883d0e85b3118fa13605e179a62b31ba51f676136ecb2d0bc1a887
-
-  - name: libbsd-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    sources: *libbsd_sources
 
   - name: libcaca
     config-opts: &libcaca_opts
@@ -406,4 +365,4 @@ modules:
     sources:
     - type: git
       url: https://github.com/bottlesdevs/Bottles
-      commit: fc8ac890031a327644fa87443b7a513c574659a2
+      commit: 704884474ac5551a50bfe3f5dc770985e5028ced
