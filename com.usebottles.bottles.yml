@@ -361,8 +361,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2022.4.14-trento
-        commit: 00ab4466dadde25230d0ee57338ac02e32ae2811
+        tag: 2022.4.14-trento-1
+        commit: 4807ca504ca1fc080de0b2b2f5dadb1f91df668b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
