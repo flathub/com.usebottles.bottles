@@ -345,4 +345,3 @@ modules:
           tag-query: .tag_name
           version-query: $tag | sub("-trento"; "")
           timestamp-query: .published_at
-
