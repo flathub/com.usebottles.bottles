@@ -18,7 +18,7 @@ finish-args:
   - --system-talk-name=org.freedesktop.UDisks2
   - --talk-name=org.freedesktop.Notifications
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib32
-  - --env=PATH=/app/bin:/app/utils/bin:/usr/bin:/usr/lib/extensions/vulkan/MangoHud/bin/
+  - --env=PATH=/app/bin:/app/utils/bin:/usr/bin:/usr/lib/extensions/vulkan/MangoHud/bin/:/usr/lib/extensions/vulkan/OBSVkCapture/bin/
   - --require-version=1.1.2
 
 inherit-extensions:
@@ -216,6 +216,60 @@ modules:
     config-opts: *mesa_glu_opts
     sources: *mesa_glu_sources
 
+  - name: OpenCL
+    buildsystem: simple
+    build-commands:
+      - cp -av CL $FLATPAK_DEST/include/
+    sources:
+      - type: git
+        url: https://github.com/KhronosGroup/OpenCL-Headers.git
+        commit: e3cd57376dada061bc6d5f9edfce2ea631b81214
+
+  - name: libpcap
+    config-opts: &libpcap_opts
+      - --enable-ipv6
+    sources: &libpcap_sources
+      - type: archive
+        url: https://www.tcpdump.org/release/libpcap-1.10.1.tar.gz
+        sha256: ed285f4accaf05344f90975757b3dbfe772ba41d1c401c2648b7fa45b711bdd4
+
+  - name: libpcap-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    config-opts: *libpcap_opts
+    sources: *libpcap_sources
+
+  - name: libcapi20
+    sources: &libcapi20_sources
+      - type: archive
+        url: http://deb.debian.org/debian/pool/main/libc/libcapi20-3/libcapi20-3_3.27.orig.tar.bz2
+        md5: 439620a9221c0222c35fb3e7a3973700
+
+  - name: libcapi20-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    sources: *libcapi20_sources
+
+  - name: libcaca
+    config-opts: &libcaca_opts
+      - --disable-doc
+      - --disable-static
+      - --disable-python
+      - --disable-ruby
+    sources: &libcaca_sources
+      - type: archive
+        url: http://caca.zoy.org/files/libcaca/libcaca-0.99.beta19.tar.gz
+        sha256: 128b467c4ed03264c187405172a4e83049342cc8cc2f655f53a2d0ee9d3772f4
+
+  - name: libcaca-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    config-opts: *libcaca_opts
+    sources: *libcaca_sources
+
   - name: rpcsvc-proto
     buildsystem: autotools
     sources:
@@ -238,42 +292,6 @@ modules:
       - type: archive
         url: https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz
         sha256: 3810e998308fba2e0f4f26043035032b027ce51ce5c8a52a8b8e340ca65f13e5
-
-  - name: samba
-    buildsystem: autotools
-    config-opts:
-      - --prefix=/app
-      - --sbindir=/app/bin
-      - --libdir=/app/lib
-      - --enable-fhs
-      - --disable-python
-      - --without-json
-      - --without-ad-dc
-      - --without-ads
-      - --without-pam
-      - --without-ldap
-      - --without-acl-support
-      - --without-systemd
-    build-options:
-      env:
-        PERL5LIB: /app/lib/perl5/
-        PERL_MM_OPT: INSTALL_BASE=/app
-    sources:
-      - type: archive
-        url: https://download.samba.org/pub/samba/samba-4.15.5.tar.gz
-        sha256: 69115e33831937ba5151be0247943147765aece658ba743f44741672ad68d17f
-
-  - name: LatencyFleX
-    buildsystem: simple
-    build-commands:
-      - mkdir -p /app/lib/x86_64-linux-gnu/
-      - mkdir -p /app/share/vulkan/implicit_layer.d/
-      - cp layer/usr/lib/x86_64-linux-gnu/liblatencyflex_layer.so /app/lib/x86_64-linux-gnu/liblatencyflex_layer.so
-      - cp layer/usr/share/vulkan/implicit_layer.d/latencyflex.json /app/share/vulkan/implicit_layer.d/latencyflex.json
-    sources:
-      - type: archive
-        url: https://github.com/ishitatsuyuki/LatencyFleX/releases/download/v0.1.0/latencyflex-v0.1.0.tar.xz
-        sha256: 9862c7608b85ac6bff018d5926c4692490ff84ca3e649119b7fc53680e64dd1a
 
   # Bottles components
   # ----------------------------------------------------------------------------
@@ -319,4 +337,4 @@ modules:
     sources:
     - type: git
       url: https://github.com/bottlesdevs/Bottles
-      commit: 63f73bd15873225d3fef18a91ec995518312a02f
+      commit: dc60eac4d9234e48b3f1c7c09a183f4bdb6e1d3d
