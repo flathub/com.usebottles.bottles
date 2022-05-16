@@ -20,6 +20,7 @@ finish-args:
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib32
   - --env=PATH=/app/bin:/app/utils/bin:/usr/bin:/usr/lib/extensions/vulkan/MangoHud/bin/:/usr/lib/extensions/vulkan/OBSVkCapture/bin/
   - --require-version=1.1.2
+  - --filesystem=xdg-data
 
 inherit-extensions:
   - org.freedesktop.Platform.GL32
