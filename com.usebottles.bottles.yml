@@ -143,6 +143,15 @@ modules:
         url: https://github.com/Python-Markdown/markdown/archive/refs/tags/3.3.6.tar.gz
         sha256: 506543bf4fcd81ea939eae4b43c031ae65b0e210b58ab1db9e3d9dae9298a601
 
+  - name: python-icoextract
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py install --prefix=/app --root=/
+    sources:
+      - type: archive
+        url: https://github.com/jlu5/icoextract/archive/refs/tags/0.1.2.tar.gz
+        sha256: 3818ad889160b33d360da4083da0a32df8d1955fb77a64bfbac49edc15d5ad3b
+
   - name: patool
     buildsystem: simple
     build-commands:
@@ -302,8 +311,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/EasyTerm
-        tag: 0.1.8
-        commit: 7677c93e865735ebf7125262e071218794ab6e70
+        tag: 0.2.0
+        commit: 6fbeab0470df55aeab141a45763147440b2f0290
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/EasyTerm/releases/latest
@@ -337,4 +346,4 @@ modules:
     sources:
     - type: git
       url: https://github.com/bottlesdevs/Bottles
-      commit: dc60eac4d9234e48b3f1c7c09a183f4bdb6e1d3d
+      commit: 9db34f67f0f8baad366fb05bcfc522809dbd56ae
