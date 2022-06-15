@@ -3,7 +3,7 @@ sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
 base: org.winehq.Wine
 base-version: stable-21.08
-runtime-version: "42"
+runtime-version: '42'
 command: bottles
 
 finish-args:
@@ -32,11 +32,11 @@ inherit-extensions:
 add-extensions:
   org.gnome.Platform.Compat.i386:
     directory: lib/i386-linux-gnu
-    version: "42"
+    version: '42'
 
   org.gnome.Platform.Compat.i386.Debug:
     directory: lib/debug/lib/i386-linux-gnu
-    version: "42"
+    version: '42'
     no-autodownload: true
 
   com.valvesoftware.Steam.Utility:
@@ -70,8 +70,8 @@ cleanup:
   - /share/gtk-doc
   - /share/man
   - /share/pkgconfig
-  - "*.la"
-  - "*.a"
+  - '*.la'
+  - '*.a'
 
 cleanup-commands:
   - mkdir -p /app/utils
@@ -250,7 +250,7 @@ modules:
         PERL5LIB: /app/lib/perl5/
         PERL_MM_OPT: INSTALL_BASE=/app
     cleanup:
-      - "*"
+      - '*'
     sources:
       - type: archive
         url: https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz
@@ -271,25 +271,25 @@ modules:
   - name: libadwaita
     buildsystem: meson
     config-opts:
-    - -Dexamples=false
-    - -Dtests=false
+      - -Dexamples=false
+      - -Dtests=false
     sources:
-    - type: git
-      url: https://gitlab.gnome.org/GNOME/libadwaita.git
-      commit: da4125248a434ba7caaec85186db6ab44deecad7
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/libadwaita.git
+        commit: da4125248a434ba7caaec85186db6ab44deecad7
     modules:
-    - name: libsass
-      buildsystem: meson
-      sources:
-      - type: git
-        url: https://github.com/lazka/libsass.git
-        branch: meson
-    - name: sassc
-      buildsystem: meson
-      sources:
-      - type: git
-        url: https://github.com/lazka/sassc.git
-        branch: meson
+      - name: libsass
+        buildsystem: meson
+        sources:
+          - type: git
+            url: https://github.com/lazka/libsass.git
+            branch: meson
+      - name: sassc
+        buildsystem: meson
+        sources:
+          - type: git
+            url: https://github.com/lazka/sassc.git
+            branch: meson
 
   - name: ImageMagick
     config-opts:
@@ -346,12 +346,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2022.6.14-brescia
-        commit: 1c3848b066097e528bb6944c81ec4617162bcbea
+        tag: 2022.6.14-brescia-1
+        commit: 8624c018bcbea89045b2558a2a4a2a4ac4b2cb6d
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
           tag-query: .tag_name
           version-query: $tag | sub("-brescia"; "")
           timestamp-query: .published_at
-  
+
