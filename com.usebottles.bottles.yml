@@ -302,6 +302,16 @@ modules:
         url: https://github.com/ImageMagick/ImageMagick/archive/7.1.0-37.tar.gz
         sha256: a54888a1a46dbb808705a3e6c6b5ecb93ee30189a8ae6ea0f02300a0ab0d0996
 
+  - name: libportal
+    buildsystem: meson
+    config-opts:
+      - -Ddocs=false
+      - -Dbackends=gtk4
+    sources:
+      - type: archive
+        url: https://github.com/flatpak/libportal/archive/refs/tags/0.6.tar.gz
+        sha256: 8ad326c4f53b7433645dc86d994fef0292bee8adda0fe67db9288ace19250a9c
+
   # Bottles components
   # ----------------------------------------------------------------------------
   - name: EasyTerm
@@ -337,8 +347,8 @@ modules:
       - cp -a * /app/etc/runtime/
     sources:
       - type: archive
-        url: https://github.com/bottlesdevs/runtime/releases/download/0.3/runtime.tar.gz
-        sha256: 37ccbe9afdc642e7b1fb3e0016c55fdccf5e221066ea96d630a5876c90792fe6
+        url: https://github.com/bottlesdevs/runtime/releases/download/0.5/runtime.tar.gz
+        sha256: 00f7e57f0b54057343cfe49de52690c7b3024771478fc75cfe55c2154e13834f
 
   - name: bottles
     builddir: true
@@ -346,4 +356,4 @@ modules:
     sources:
     - type: git
       url: https://github.com/bottlesdevs/Bottles
-      commit: c7c61da3bf2aeccbcb4d8c1e49abbb906cf31d38
+      commit: e40997811766898c413ce7fbceaeef94d9736c38
