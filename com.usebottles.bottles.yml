@@ -337,8 +337,8 @@ modules:
       - cp -a * /app/etc/runtime/
     sources:
       - type: archive
-        url: https://github.com/bottlesdevs/runtime/releases/download/0.3/runtime.tar.gz
-        sha256: 37ccbe9afdc642e7b1fb3e0016c55fdccf5e221066ea96d630a5876c90792fe6
+        url: https://github.com/bottlesdevs/runtime/releases/download/0.5/runtime.tar.gz
+        sha256: 00f7e57f0b54057343cfe49de52690c7b3024771478fc75cfe55c2154e13834f
 
   - name: bottles
     builddir: true
@@ -346,8 +346,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2022.6.14-brescia
-        commit: 1c3848b066097e528bb6944c81ec4617162bcbea
+        tag: 2022.6.28-brescia
+        commit: 49d560089694d0f6939508f6dd436b841bd887cb
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
