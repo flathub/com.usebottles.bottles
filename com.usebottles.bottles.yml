@@ -276,7 +276,8 @@ modules:
     sources:
     - type: git
       url: https://gitlab.gnome.org/GNOME/libadwaita.git
-      commit: da4125248a434ba7caaec85186db6ab44deecad7
+      tag: 1.2.alpha
+      commit: 9150f4016a04064a00733b78391c8e6aad49bee8
     modules:
     - name: libsass
       buildsystem: meson
@@ -301,6 +302,16 @@ modules:
       - type: archive
         url: https://github.com/ImageMagick/ImageMagick/archive/7.1.0-37.tar.gz
         sha256: a54888a1a46dbb808705a3e6c6b5ecb93ee30189a8ae6ea0f02300a0ab0d0996
+
+  - name: libportal
+    buildsystem: meson
+    config-opts:
+      - -Ddocs=false
+      - -Dbackends=gtk4
+    sources:
+      - type: archive
+        url: https://github.com/flatpak/libportal/archive/refs/tags/0.6.tar.gz
+        sha256: 8ad326c4f53b7433645dc86d994fef0292bee8adda0fe67db9288ace19250a9c
 
   # Bottles components
   # ----------------------------------------------------------------------------
@@ -339,7 +350,7 @@ modules:
       - type: archive
         url: https://github.com/bottlesdevs/runtime/releases/download/0.5/runtime.tar.gz
         sha256: 00f7e57f0b54057343cfe49de52690c7b3024771478fc75cfe55c2154e13834f
-
+        
   - name: bottles
     builddir: true
     buildsystem: meson
