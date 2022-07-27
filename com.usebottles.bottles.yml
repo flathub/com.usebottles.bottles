@@ -3,7 +3,7 @@ sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
 base: org.winehq.Wine
 base-version: stable-21.08
-runtime-version: '42'
+runtime-version: "42"
 command: bottles
 
 finish-args:
@@ -15,6 +15,7 @@ finish-args:
   - --socket=wayland
   - --socket=pulseaudio
   - --device=all
+  - --filesystem=xdg-download
   - --system-talk-name=org.freedesktop.UDisks2
   - --talk-name=org.freedesktop.Notifications
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib32
@@ -32,11 +33,11 @@ inherit-extensions:
 add-extensions:
   org.gnome.Platform.Compat.i386:
     directory: lib/i386-linux-gnu
-    version: '42'
+    version: "42"
 
   org.gnome.Platform.Compat.i386.Debug:
     directory: lib/debug/lib/i386-linux-gnu
-    version: '42'
+    version: "42"
     no-autodownload: true
 
   com.valvesoftware.Steam.Utility:
@@ -70,8 +71,8 @@ cleanup:
   - /share/gtk-doc
   - /share/man
   - /share/pkgconfig
-  - '*.la'
-  - '*.a'
+  - "*.la"
+  - "*.a"
 
 cleanup-commands:
   - mkdir -p /app/utils
@@ -79,14 +80,31 @@ cleanup-commands:
 modules:
   # Python modules
   # ----------------------------------------------------------------------------
-  - name: PyYAML
+  - name: python-pillow
     buildsystem: simple
     build-commands:
       - python3 setup.py install --prefix=/app --root=/
     sources:
       - type: archive
+        url: https://github.com/python-pillow/Pillow/archive/refs/tags/9.2.0.tar.gz
+        sha256: 95836f00972dbf724bf1270178683a0ac4ea23c6c3a980858fc9f2f9456e32ef
+
+  - name: PyYAML
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py --with-libyaml install --prefix=/app --root=/
+    sources:
+      - type: archive
         url: https://github.com/yaml/pyyaml/archive/refs/tags/6.0.tar.gz
         sha256: f33eaba25d8e0c1a959bbf00655198c287dfc5868f5b7b01e401eaa1796cc778
+    modules:
+    - name: libyaml
+      config-opts:
+        - --disable-static
+      sources:
+        - type: archive
+          url: https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
+          sha256: c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4
 
   - name: python-requests
     buildsystem: simple
@@ -250,7 +268,7 @@ modules:
         PERL5LIB: /app/lib/perl5/
         PERL_MM_OPT: INSTALL_BASE=/app
     cleanup:
-      - '*'
+      - "*"
     sources:
       - type: archive
         url: https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz
@@ -271,26 +289,26 @@ modules:
   - name: libadwaita
     buildsystem: meson
     config-opts:
-      - -Dexamples=false
-      - -Dtests=false
+    - -Dexamples=false
+    - -Dtests=false
     sources:
-      - type: git
-        url: https://gitlab.gnome.org/GNOME/libadwaita.git
-        tag: 1.2.alpha
-        commit: 9150f4016a04064a00733b78391c8e6aad49bee8
+    - type: git
+      url: https://gitlab.gnome.org/GNOME/libadwaita.git
+      tag: 1.2.alpha
+      commit: 9150f4016a04064a00733b78391c8e6aad49bee8
     modules:
-      - name: libsass
-        buildsystem: meson
-        sources:
-          - type: git
-            url: https://github.com/lazka/libsass.git
-            branch: meson
-      - name: sassc
-        buildsystem: meson
-        sources:
-          - type: git
-            url: https://github.com/lazka/sassc.git
-            branch: meson
+    - name: libsass
+      buildsystem: meson
+      sources:
+      - type: git
+        url: https://github.com/lazka/libsass.git
+        branch: meson
+    - name: sassc
+      buildsystem: meson
+      sources:
+      - type: git
+        url: https://github.com/lazka/sassc.git
+        branch: meson
 
   - name: ImageMagick
     config-opts:
@@ -341,6 +359,31 @@ modules:
             url: https://gitlab.gnome.org/GNOME/vte/-/archive/0.66.2/vte-0.66.2.tar.gz
             sha256: a486e389e3d16f903ed6f27d9513c2a44bff5945a12af4fcfe48ce00992c42ab
 
+  - name: FVS
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py install --prefix=/app --root=/
+    sources:
+      - type: git
+        url: https://github.com/mirkobrombin/FVS
+        tag: "0.3.4"
+        commit: 4e76dc54028a88099c72ec3a925b5f059f442d05
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/mirkobrombin/FVS/releases/latest
+          tag-query: .tag_name
+          version-query: .tag_name
+          timestamp-query: .published_at
+    modules:
+      - name: orjson
+        buildsystem: simple
+        build-commands:
+          - pip3 install --prefix /app --no-deps orjson-*.whl
+        sources:
+          - type: file
+            url: https://files.pythonhosted.org/packages/d6/79/174c198de7beb2f5ce06c41ecafb1aafc0714bb61a051ad9dfbc2fed76e8/orjson-3.7.8-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+            sha256: 7ef66e7c47e9531dfa3b3ffb791b548c84903570b0914b01acc5eeb56ff5bc33
+
   - name: runtime
     buildsystem: simple
     build-commands:
@@ -357,8 +400,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2022.7.14-brescia-3
-        commit: ad65410e800c16e70e5a208a04401cc619a55336
+        tag: 2022.7.28-brescia
+        commit: cb5321b7f1d47462b91193387b999fdbf4d0610b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
