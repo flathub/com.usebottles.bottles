@@ -189,6 +189,16 @@ modules:
 
   # Tools / Codecs
   # ----------------------------------------------------------------------------
+  - name: vmtouch
+    buildsystem: simple
+    sources:
+      - type: git
+        url: https://github.com/hoytech/vmtouch
+        commit: 8f6898e3c027f445962e223ca7a7b33d40395fc6
+    build-commands:
+      - make
+      - make install PREFIX=/app
+      
   - name: vulkan-tools
     buildsystem: cmake-ninja
     config-opts:
@@ -400,8 +410,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2022.7.28-brescia-2
-        commit: 7f5259265be81e7e5e762469d15859b64c513d85
+        tag: 2022.8.14-brescia
+        commit: 9138853be91d963c471f1a86e3d8f560175445df
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
