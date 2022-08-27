@@ -410,8 +410,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2022.8.14-brescia-1
-        commit: 572556b912e3ec233d331dd6c1d80b71bd9f9af1
+        tag: 2022.8.28-brescia
+        commit: f600a859647cf4c88e77f702474602c52b88ffab
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
