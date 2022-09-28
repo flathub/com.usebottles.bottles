@@ -394,8 +394,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: "2022.9.28"
-        commit: c2ae56eeb3771351c733d4fad911bf9f2385397a
+        tag: "2022.9.28.1"
+        commit: 7ac2feb3dbf5b398814b90144e7a05a969cbd0ac
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
