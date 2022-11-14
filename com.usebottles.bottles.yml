@@ -324,6 +324,16 @@ modules:
         url: https://gitlab.gnome.org/jwestman/blueprint-compiler
         tag: v0.4.0
         commit: 75a6d95988736ec0471d22ceb07579c0cedac2ad
+        
+  - name: vkbasalt-cli
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py install --prefix=/app --root=/
+    sources:
+      - type: git
+        url: https://gitlab.com/TheEvilSkeleton/vkbasalt-cli
+        tag: v3.0
+        commit: 68d37866d7e732923fb628b81dcb0a808e9ccfe6
 
   # Bottles components
   # ----------------------------------------------------------------------------
@@ -394,8 +404,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2022.10.14.1
-        commit: cae0ee88083445020d76d80c9692f80ca3eea4e4
+        tag: 2022.11.14
+        commit: df11a2e80c1747500e0a18875808819c43bcd25c
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
