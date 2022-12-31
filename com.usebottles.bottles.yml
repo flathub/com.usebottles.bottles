@@ -107,6 +107,15 @@ modules:
             url: https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
             sha256: c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4
 
+  - name: PycURL
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py install --prefix=/app --root=/
+    sources:
+      - type: git
+        url: https://github.com/pycurl/pycurl.git
+        tag: REL_7_45_1
+
   - name: python-requests
     buildsystem: simple
     build-commands:
@@ -246,22 +255,6 @@ modules:
 
   # Libraries
   # ----------------------------------------------------------------------------
-
-  - name: mesa-glu
-    config-opts: &mesa_glu_opts
-      - --disable-static
-    sources: &mesa_glu_sources
-      - type: archive
-        url: https://mesa.freedesktop.org/archive/glu/glu-9.0.2.tar.xz
-        sha256: 6e7280ff585c6a1d9dfcdf2fca489251634b3377bfc33c29e4002466a38d02d4
-
-  - name: mesa-glu-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    config-opts: *mesa_glu_opts
-    sources: *mesa_glu_sources
-
   - name: rpcsvc-proto
     buildsystem: autotools
     sources:
@@ -325,7 +318,7 @@ modules:
         url: https://gitlab.gnome.org/jwestman/blueprint-compiler
         tag: v0.4.0
         commit: 75a6d95988736ec0471d22ceb07579c0cedac2ad
-        
+
   - name: vkbasalt-cli
     buildsystem: simple
     build-commands:
@@ -396,8 +389,8 @@ modules:
       - cp -a * /app/etc/runtime/
     sources:
       - type: archive
-        url: https://github.com/bottlesdevs/runtime/releases/download/0.5/runtime.tar.gz
-        sha256: 00f7e57f0b54057343cfe49de52690c7b3024771478fc75cfe55c2154e13834f
+        url: https://github.com/bottlesdevs/runtime/releases/download/0.6/runtime.tar.gz
+        sha256: f2b47012cde0a7e9c65ca4d793d19a2f9d3fe68b76dd457839e62ec34f214528
 
   - name: bottles
     builddir: true
@@ -405,8 +398,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2022.11.14
-        commit: df11a2e80c1747500e0a18875808819c43bcd25c
+        tag: 2022.12.14.1
+        commit: e37a0466d76483eaeba4f9bc897d823e35a0d935
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
