@@ -397,8 +397,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: 2022.12.14.1
-        commit: e37a0466d76483eaeba4f9bc897d823e35a0d935
+        tag: '50'
+        commit: d8d62900e41726a1867b3094c0f17ae57ddd4183
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
