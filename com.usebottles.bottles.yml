@@ -3,7 +3,7 @@ sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
 base: org.winehq.Wine
 base-version: stable-22.08
-runtime-version: '43'
+runtime-version: "43"
 command: bottles
 
 finish-args:
@@ -34,11 +34,11 @@ inherit-extensions:
 add-extensions:
   org.gnome.Platform.Compat.i386:
     directory: lib/i386-linux-gnu
-    version: '43'
+    version: "43"
 
   org.gnome.Platform.Compat.i386.Debug:
     directory: lib/debug/lib/i386-linux-gnu
-    version: '43'
+    version: "43"
     no-autodownload: true
 
   com.valvesoftware.Steam.Utility:
@@ -72,8 +72,8 @@ cleanup:
   - /share/gtk-doc
   - /share/man
   - /share/pkgconfig
-  - '*.la'
-  - '*.a'
+  - "*.la"
+  - "*.a"
 
 cleanup-commands:
   - mkdir -p /app/utils
@@ -81,15 +81,6 @@ cleanup-commands:
 modules:
   # Python modules
   # ----------------------------------------------------------------------------
-  - name: python-pillow
-    buildsystem: simple
-    build-commands:
-      - python3 setup.py install --prefix=/app --root=/
-    sources:
-      - type: archive
-        url: https://github.com/python-pillow/Pillow/archive/refs/tags/9.2.0.tar.gz
-        sha256: 95836f00972dbf724bf1270178683a0ac4ea23c6c3a980858fc9f2f9456e32ef
-
   - name: PyYAML
     buildsystem: simple
     build-commands:
@@ -99,13 +90,13 @@ modules:
         url: https://github.com/yaml/pyyaml/archive/refs/tags/6.0.tar.gz
         sha256: f33eaba25d8e0c1a959bbf00655198c287dfc5868f5b7b01e401eaa1796cc778
     modules:
-      - name: libyaml
-        config-opts:
-          - --disable-static
-        sources:
-          - type: archive
-            url: https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
-            sha256: c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4
+    - name: libyaml
+      config-opts:
+        - --disable-static
+      sources:
+        - type: archive
+          url: https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
+          sha256: c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4
 
   - name: PycURL
     buildsystem: simple
@@ -197,6 +188,15 @@ modules:
         url: https://github.com/erocarrera/pefile/releases/download/v2021.9.3/pefile-2021.9.3.tar.gz
         sha256: 344a49e40a94e10849f0fe34dddc80f773a12b40675bf2f7be4b8be578bdd94a
 
+  - name: python-pathvalidate
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py install --prefix=/app --root=/
+    sources:
+      - type: archive
+        url: https://github.com/thombashi/pathvalidate/archive/refs/tags/v2.5.2.zip
+        sha256: 823b72c567147468b5823958a3625c72867455c13b8e367397ee467decccaea4
+
   # Tools / Codecs
   # ----------------------------------------------------------------------------
   - name: vmtouch
@@ -272,7 +272,7 @@ modules:
         PERL5LIB: /app/lib/perl5/
         PERL_MM_OPT: INSTALL_BASE=/app
     cleanup:
-      - '*'
+      - "*"
     sources:
       - type: archive
         url: https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz
@@ -316,7 +316,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.gnome.org/jwestman/blueprint-compiler
-        tag: v0.4.0
+        tag: 'v0.4.0'
         commit: 75a6d95988736ec0471d22ceb07579c0cedac2ad
 
   - name: vkbasalt-cli
@@ -364,7 +364,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mirkobrombin/FVS
-        tag: 0.3.4
+        tag: "0.3.4"
         commit: 4e76dc54028a88099c72ec3a925b5f059f442d05
         x-checker-data:
           type: json
@@ -389,8 +389,8 @@ modules:
       - cp -a * /app/etc/runtime/
     sources:
       - type: archive
-        url: https://github.com/bottlesdevs/runtime/releases/download/0.6/runtime.tar.gz
-        sha256: f2b47012cde0a7e9c65ca4d793d19a2f9d3fe68b76dd457839e62ec34f214528
+        url: https://github.com/bottlesdevs/runtime/releases/download/0.6.2/runtime.tar.gz
+        sha256: 5ccb0ed38672e404f1b0dce14c35df95caf4f85294e3f667483dbb96dee3eff4
 
   - name: bottles
     builddir: true
@@ -398,8 +398,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: '50.2'
-        commit: 376f29988216e129ffb7e47d2661705250c42bd1
+        tag: '51.0'
+        commit: 723133c971d115933f7aeb9520c3161e8e9a2d8b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
