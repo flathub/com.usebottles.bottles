@@ -398,8 +398,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: "51.3"
-        commit: 1ea6b2dbba579c52e42de84c9d0bb45ce1fe8532
+        tag: "51.4"
+        commit: 5159b0bfec3ad76eacc38d74c33c5b60b05bdaee
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
