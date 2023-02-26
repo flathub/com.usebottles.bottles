@@ -398,7 +398,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        commit: 59eb75811c9d097d56e957087d76609835f4a285
+        commit: 6e583e408e18a47ffdcf83c46443b11badbdc22a
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
