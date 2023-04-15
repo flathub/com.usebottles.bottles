@@ -3,7 +3,7 @@ sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
 base: org.winehq.Wine
 base-version: stable-22.08
-runtime-version: "43"
+runtime-version: "44"
 command: bottles
 
 finish-args:
@@ -34,11 +34,11 @@ inherit-extensions:
 add-extensions:
   org.gnome.Platform.Compat.i386:
     directory: lib/i386-linux-gnu
-    version: "43"
+    version: "44"
 
   org.gnome.Platform.Compat.i386.Debug:
     directory: lib/debug/lib/i386-linux-gnu
-    version: "43"
+    version: "44"
     no-autodownload: true
 
   com.valvesoftware.Steam.Utility:
@@ -398,7 +398,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        commit: 59eb75811c9d097d56e957087d76609835f4a285
+        commit: 084a7987859fcc455f2675e6bdce8c499ac14b13
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
