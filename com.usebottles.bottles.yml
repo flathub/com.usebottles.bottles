@@ -3,7 +3,7 @@ sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
 base: org.winehq.Wine
 base-version: stable-22.08
-runtime-version: "43"
+runtime-version: '43'
 command: bottles
 
 finish-args:
@@ -34,11 +34,11 @@ inherit-extensions:
 add-extensions:
   org.gnome.Platform.Compat.i386:
     directory: lib/i386-linux-gnu
-    version: "43"
+    version: '43'
 
   org.gnome.Platform.Compat.i386.Debug:
     directory: lib/debug/lib/i386-linux-gnu
-    version: "43"
+    version: '43'
     no-autodownload: true
 
   com.valvesoftware.Steam.Utility:
@@ -72,8 +72,8 @@ cleanup:
   - /share/gtk-doc
   - /share/man
   - /share/pkgconfig
-  - "*.la"
-  - "*.a"
+  - '*.la'
+  - '*.a'
 
 cleanup-commands:
   - mkdir -p /app/utils
@@ -90,13 +90,13 @@ modules:
         url: https://github.com/yaml/pyyaml/archive/refs/tags/6.0.tar.gz
         sha256: f33eaba25d8e0c1a959bbf00655198c287dfc5868f5b7b01e401eaa1796cc778
     modules:
-    - name: libyaml
-      config-opts:
-        - --disable-static
-      sources:
-        - type: archive
-          url: https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
-          sha256: c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4
+      - name: libyaml
+        config-opts:
+          - --disable-static
+        sources:
+          - type: archive
+            url: https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
+            sha256: c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4
 
   - name: PycURL
     buildsystem: simple
@@ -272,7 +272,7 @@ modules:
         PERL5LIB: /app/lib/perl5/
         PERL_MM_OPT: INSTALL_BASE=/app
     cleanup:
-      - "*"
+      - '*'
     sources:
       - type: archive
         url: https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz
@@ -316,7 +316,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.gnome.org/jwestman/blueprint-compiler
-        tag: 'v0.4.0'
+        tag: v0.4.0
         commit: 75a6d95988736ec0471d22ceb07579c0cedac2ad
 
   - name: vkbasalt-cli
@@ -364,7 +364,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mirkobrombin/FVS
-        tag: "0.3.4"
+        tag: 0.3.4
         commit: 4e76dc54028a88099c72ec3a925b5f059f442d05
         x-checker-data:
           type: json
@@ -398,8 +398,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/bottlesdevs/Bottles
-        tag: "51.5"
-        commit: 3bb14ee9eb0599331070488e9d3541063510c0e5
+        tag: '51.6'
+        commit: f790fa8d10bded07b670086c540e319e27d60416
         x-checker-data:
           type: json
           url: https://api.github.com/repos/bottlesdevs/Bottles/releases/latest
