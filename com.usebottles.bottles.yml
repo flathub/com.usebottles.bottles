@@ -308,4 +308,4 @@ modules:
         x-checker-data:
           type: git
           is-main-source: true
-          tag-pattern: ^([\d.]+)$
+          tag-pattern: ^((?:\d+.?){1,2})$
