@@ -297,15 +297,6 @@ modules:
           url-query: '"https://github.com/bottlesdevs/runtime/releases/download/"
             + $version + "/runtime-" + $version + ".tar.gz"'
 
-  - name: bottles
-    builddir: true
-    buildsystem: meson
-    sources:
-      - type: git
-        url: https://github.com/bottlesdevs/Bottles
-        tag: '51.6'
-        commit: f790fa8d10bded07b670086c540e319e27d60416
-        x-checker-data:
-          type: git
-          is-main-source: true
-          tag-pattern: ^((?:\d+.?){1,2})$
+  # Bottles source directory
+  # ----------------------------------------------------------------------------
+  - com.usebottles.bottles.src.yaml
