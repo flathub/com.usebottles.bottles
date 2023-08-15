@@ -274,8 +274,8 @@ modules:
         sources:
           - type: git
             url: https://gitlab.gnome.org/GNOME/vte
-            tag: 0.72.2
-            commit: 854e56263454077ab009aaff67f1afe0dbd52878
+            tag: 0.73.93
+            commit: f13f4d6cd83ba01315ac62755d70736705c40c99
             x-checker-data:
               type: git
               tag-pattern: ^([\d.]+)$
