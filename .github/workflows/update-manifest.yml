@@ -1,0 +1,88 @@
+name: Update manifest
+
+on:
+  schedule:
+    # Check for update every day at 07:11
+    - cron: "0 * * * *" # run every hour
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+env:
+  PR_BRANCH: pr/ci-manifest/${{ github.ref_name }}
+
+jobs:
+  update-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: "flathub-repository"
+          ref: ${{ github.ref_name }}
+
+      - uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
+        env:
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
+          EMAIL: github-actions[bot]@users.noreply.github.com
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: --update --require-important-update --commit-only --never-fork "flathub-repository/com.usebottles.bottles.src.yaml"
+
+      - name: Check for new release
+        working-directory: "flathub-repository"
+        id: check-release
+        shell: bash {0}
+        run: |
+          git diff ${{ github.ref_name }} --exit-code com.usebottles.bottles.src.yaml
+          updated=$?
+          if [ $updated -ne 0 ]; then
+            latest_version_sha1=$(grep -Ei "commit: [0-9a-f]{40}" com.usebottles.bottles.src.yaml | grep -oEi "[0-9a-f]{40}")
+            echo "updated=true" >> $GITHUB_OUTPUT
+            echo "sha1=$latest_version_sha1" >> $GITHUB_OUTPUT
+          else
+            echo "updated=false" >> $GITHUB_OUTPUT
+          fi
+
+      - uses: actions/checkout@v3
+        if: steps.check-release.outputs.updated == 'true'
+        with:
+          repository: bottlesdevs/Bottles
+          path: "bottles-repository"
+          ref: ${{ steps.check-release.outputs.sha1 }}
+
+      - name: Create PR if necessary
+        if: steps.check-release.outputs.updated == 'true'
+        shell: bash {0}
+        run: |
+          cp bottles-repository/com.usebottles.bottles.pypi-deps.yaml flathub-repository/com.usebottles.bottles.pypi-deps.yaml
+          cp bottles-repository/com.usebottles.bottles.yml flathub-repository/com.usebottles.bottles.yml
+          cd flathub-repository
+          sudo chown -R "${USER:-$(id -un)}" .
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git diff ${{ github.ref_name }} --exit-code com.usebottles.bottles.pypi-deps.yaml com.usebottles.bottles.yml
+          updated=$?
+          if [ $updated -ne 0 ]; then
+              git add com.usebottles.bottles.pypi-deps.yaml com.usebottles.bottles.yml
+              git commit -m "Update manifests"
+          fi
+          git checkout -B ${{ env.PR_BRANCH }}
+          git push -f --set-upstream origin ${{ env.PR_BRANCH }}
+          pushed=$?
+          if [ $pushed -ne 0 ]; then
+            echo "::error::Cannot push to ${{ env.PR_BRANCH }} branch, permission issue. Set workflow write permission in https://github.com/${{ github.repository }}/settings/actions."
+            exit 1
+          fi
+          gh pr create --title ":robot:: Update available" --body ":wrench: New release available." --head ${{ env.PR_BRANCH }} --base ${{ github.ref_name }}
+          pr_created=$?
+          pr_already_exists=$(gh pr list --app 'github-actions' --head ${{ env.PR_BRANCH }} --base ${{ github.ref_name }} --state 'open' --json number --jq '.[] | .[]')
+          if  [ $pr_created -ne 0 ] && [ -z "$pr_already_exists" ]; then
+            echo "::error::Cannot create pull request, permission issue. Allow Github Actions to create pull requests in https://github.com/${{ github.repository }}/settings/actions."
+            exit 1
+          fi
+          exit 0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
