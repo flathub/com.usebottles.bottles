@@ -228,6 +228,8 @@ modules:
 
   - name: blueprint-compiler
     buildsystem: meson
+    cleanup:
+      - '*'
     sources:
       - type: git
         url: https://gitlab.gnome.org/jwestman/blueprint-compiler
