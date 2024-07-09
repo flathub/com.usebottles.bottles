@@ -5,7 +5,7 @@ sources:
   - type: git
     url: https://github.com/bottlesdevs/Bottles
     tag: '51.12'
-    commit: de20ced70ecf07bbe1393e52c53261283fa7916b
+    commit: 90fd37d809c9727a6c910510505b847256ca7b89
     x-checker-data:
       type: git
       is-main-source: true
