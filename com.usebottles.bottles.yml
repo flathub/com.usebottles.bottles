@@ -20,6 +20,7 @@ finish-args:
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib32
   - --env=PATH=/app/bin:/app/utils/bin:/usr/bin:/usr/lib/extensions/vulkan/MangoHud/bin/:/usr/bin:/usr/lib/extensions/vulkan/OBSVkCapture/bin/:/usr/lib/extensions/vulkan/gamescope/bin/
   - --env=GST_PLUGIN_SYSTEM_PATH=/app/lib/gstreamer-1.0:/usr/lib/x86_64-linux-gnu/gstreamer-1.0:/app/lib32/gstreamer-1.0:/usr/lib/i386-linux-gnu/gstreamer-1.0
+  - --env=XDG_CONFIG_DIRS=/app/etc/xdg:/etc/xdg:/usr/lib/x86_64-linux-gnu/GL # The last path here enables 32-bit Vulkan support on NVIDIA GPUs.
   - --require-version=1.1.2
 
 inherit-extensions:
