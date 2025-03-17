@@ -140,7 +140,7 @@ modules:
             commit: 952f776f6573aafbb62ea717d871cd1d6816c387
             x-checker-data:
               type: git
-                tag-pattern: ^vulkan-sdk-([\d.]+)$
+              tag-pattern: ^vulkan-sdk-([\d.]+)$
 
   - name: xdpyinfo
     buildsystem: autotools
