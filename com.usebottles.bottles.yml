@@ -3,7 +3,7 @@ sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
 base: org.winehq.Wine
 base-version: stable-24.08
-runtime-version: &runtime-version '47'
+runtime-version: &runtime-version '48'
 command: bottles
 
 finish-args:
