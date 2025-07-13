@@ -3,7 +3,7 @@ sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
 base: org.winehq.Wine
 base-version: stable-24.08
-runtime-version: &runtime-version '47'
+runtime-version: &runtime-version '48'
 command: bottles
 
 finish-args:
@@ -145,8 +145,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ImageMagick/ImageMagick
-        tag: 7.1.1-38
-        commit: b0ab92265bab638e6ecd2f18b45977c38771c671
+        tag: 7.1.1-47
+        commit: 82572afc879b439cbf8c9c6f3a9ac7626adf98fb
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+-[\d]+)$
@@ -162,8 +162,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/flatpak/libportal
-        tag: 0.8.1
-        commit: 26c15008cbe579f57f89468384f8efc033f25f6f
+        tag: 0.9.1
+        commit: 8f5dc8d192f6e31dafe69e35219e3b707bde71ce
         x-checker-data:
           type: git
           is-important: true
@@ -173,9 +173,9 @@ modules:
     buildsystem: meson
     sources:
       - type: git
-        url: https://gitlab.gnome.org/jwestman/blueprint-compiler
-        tag: v0.14.0
-        commit: 8e10fcf8692108b9d4ab78f41086c5d7773ef864
+        url: https://gitlab.gnome.org/GNOME/blueprint-compiler.git
+        tag: 0.18.0
+        commit: 07c9c9df9cd1b6b4454ecba21ee58211e9144a4b
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -193,36 +193,6 @@ modules:
           type: git
           is-important: true
           tag-pattern: ^v([\d.]+)$
-
-  - name: libsass
-    buildsystem: meson
-    sources:
-      - type: git
-        url: https://github.com/lazka/libsass.git
-        commit: aac79dccd3c8f7e8f22125f87a119f3b1ee9d487
-
-  - name: sassc
-    buildsystem: meson
-    sources:
-      - type: git
-        url: https://github.com/lazka/sassc.git
-        commit: a1950c2d95ea4c051feb90bb1f43559fbb54bf36
-
-  - name: libadwaita
-    buildsystem: meson
-    config-opts:
-      - -Dexamples=false
-      - -Dtests=false
-    cleanup:
-      - /include
-      - /lib/pkgconfig
-      - /libexec
-      - /share/dbus-1
-    sources:
-      - type: git
-        url: https://gitlab.gnome.org/GNOME/libadwaita.git
-        tag: 1.7.alpha
-        commit: f4b0068b2ef8db3a582eda08eacbaa8ceac3ef3a
 
   # Bottles components
   # ----------------------------------------------------------------------------
