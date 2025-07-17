@@ -196,6 +196,7 @@ modules:
 
   # Bottles components
   # ----------------------------------------------------------------------------
+
   - name: EasyTerm
     buildsystem: simple
     build-commands:
