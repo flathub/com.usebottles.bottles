@@ -15,7 +15,7 @@ jobs:
   update-manifest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           path: "flathub-repository"
           ref: ${{ github.ref_name }}
@@ -46,7 +46,7 @@ jobs:
             echo "updated=false" >> $GITHUB_OUTPUT
           fi
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         if: steps.check-release.outputs.updated == 'true'
         with:
           repository: bottlesdevs/Bottles
