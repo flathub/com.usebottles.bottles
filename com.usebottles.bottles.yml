@@ -57,19 +57,6 @@ add-extensions:
     no-autodownload: true
     autodelete: false
 
-x-compat-i386-opts: &compat_i386_opts
-  prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
-  ldflags: -L/app/lib32
-  append-path: /usr/lib/sdk/toolchain-i386/bin
-  env:
-    CC: i686-unknown-linux-gnu-gcc
-    CXX: i686-unknown-linux-gnu-g++
-  libdir: /app/lib32
-
-sdk-extensions:
-  - org.gnome.Sdk.Compat.i386
-  - org.freedesktop.Sdk.Extension.toolchain-i386
-
 cleanup:
   - /include
   - /lib/pkgconfig
