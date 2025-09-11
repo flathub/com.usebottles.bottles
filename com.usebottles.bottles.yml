@@ -120,6 +120,47 @@ modules:
               type: git
               tag-pattern: ^sdk-([\d.]+)$
 
+  - name: gamemode
+    buildsystem: meson
+    config-opts: &gamemode_opts
+      - -Dwith-examples=false
+      - -Dwith-util=false
+      - -Dwith-sd-bus-provider=no-daemon
+    sources: &gamemode_sources
+      - type: git
+        url: https://github.com/FeralInteractive/gamemode
+        tag: 1.8.2
+        commit: c54d6d4243b0dd0afcb49f2c9836d432da171a2b
+        x-checker-data:
+          type: git
+          is-important: true
+          tag-pattern: ^([\d.]+)$
+
+  - name: gamemode-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    buildsystem: meson
+    config-opts: *gamemode_opts
+    sources: *gamemode_sources
+
+  - name: gamemoderun
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 data/gamemoderun -t /app/bin
+    sources: *gamemode_sources
+
+  - name: xdpyinfo
+    buildsystem: autotools
+    sources:
+      - type: git
+        url: https://gitlab.freedesktop.org/xorg/app/xdpyinfo.git
+        tag: xdpyinfo-1.3.4
+        commit: ea4083ccb2a5ce4252acabeb2eb7bf49f7be25e0
+        x-checker-data:
+          type: git
+          tag-pattern: ^xdpyinfo-([\d.]+)$
+
   # Libraries
   # ----------------------------------------------------------------------------
 
