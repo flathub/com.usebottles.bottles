@@ -17,12 +17,13 @@ finish-args:
   - --socket=pulseaudio
   - --device=all
   - --system-talk-name=org.freedesktop.UDisks2
-  - --env=LD_LIBRARY_PATH=/app/lib:/app/lib32
+  - --env=LD_LIBRARY_PATH=/app/lib:/app/lib32:/app/lib/i386-linux-gnu
   - --env=PATH=/app/bin:/app/utils/bin:/usr/bin:/usr/lib/extensions/vulkan/MangoHud/bin/:/usr/bin:/usr/lib/extensions/vulkan/OBSVkCapture/bin/:/usr/lib/extensions/vulkan/gamescope/bin/
   - --env=GST_PLUGIN_SYSTEM_PATH=/app/lib/gstreamer-1.0:/usr/lib/x86_64-linux-gnu/gstreamer-1.0:/app/lib32/gstreamer-1.0:/usr/lib/i386-linux-gnu/gstreamer-1.0
   - --require-version=1.1.2
 
 inherit-extensions:
+  - org.gnome.Platform.Compat.i386
   - org.freedesktop.Platform.GL32
   - org.freedesktop.Platform.ffmpeg-full
   - org.freedesktop.Platform.ffmpeg_full.i386
@@ -72,6 +73,7 @@ cleanup-commands:
   - mkdir -p /app/utils
   - mkdir -p /app/share/steam/compatibilitytools.d
   - mkdir -p /app/share/vulkan/implicit_layer.d/
+  - ln -sfn /app/lib/i386-linux-gnu /app/lib32
 
 modules:
   # PYPI modules
