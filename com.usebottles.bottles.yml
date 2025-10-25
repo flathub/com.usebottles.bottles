@@ -31,7 +31,7 @@ inherit-extensions:
   - org.winehq.Wine.mono
 
 add-extensions:
-  org.freedesktop.Platform.Compat.i386::
+  org.freedesktop.Platform.Compat.i386:
     directory: lib/i386-linux-gnu
     version: *runtime-version
 
