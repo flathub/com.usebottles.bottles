@@ -42,7 +42,7 @@ add-extensions:
 
   org.freedesktop.Platform.codecs_extra.i386:
     directory: lib/i386-linux-gnu/codecs-extra
-    version: '25.08-extra'
+    version: '24.08-extra'
     autodelete: false
     add-ld-path: lib
 
