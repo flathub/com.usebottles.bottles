@@ -79,6 +79,35 @@ cleanup-commands:
   - mkdir -p /app/lib/i386-linux-gnu/codecs-extra
 
 modules:
+  # Eagle modules
+  - name: yara
+    buildsystem: autotools
+    config-opts:
+      - "--disable-static"
+      - "--enable-cuckoo"
+      - "--enable-magic"
+      - "--enable-dotnet"
+    sources:
+      - type: git
+        url: https://github.com/VirusTotal/yara
+        tag: v4.5.5
+        x-checker-data:
+          type: git
+          tag-pattern: "^v([\\d.]+)$"
+    modules:
+      - name: jansson
+        buildsystem: cmake-ninja
+        config-opts:
+          - "-DJANSSON_BUILD_DOCS=OFF"
+          - "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+        sources:
+          - type: git
+            url: https://github.com/akheron/jansson
+            tag: v2.14.1
+            x-checker-data:
+              type: git
+              tag-pattern: "^v([\\d.]+)$"
+              
   # PYPI modules
   # ----------------------------------------------------------------------------
   - com.usebottles.bottles.pypi-deps.yaml
