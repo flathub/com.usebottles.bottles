@@ -22,6 +22,9 @@ finish-args:
   - --env=GST_PLUGIN_SYSTEM_PATH=/app/lib/gstreamer-1.0:/usr/lib/x86_64-linux-gnu/gstreamer-1.0:/usr/lib/i386-linux-gnu/gstreamer-1.0
   - --require-version=1.1.2
 
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.golang
+
 inherit-extensions:
   - org.freedesktop.Platform.GL32
   - org.winehq.Wine.gecko
@@ -111,6 +114,7 @@ modules:
   # PYPI modules
   # ----------------------------------------------------------------------------
   - com.usebottles.bottles.pypi-deps.yaml
+  - com.usebottles.bottles.fvs2-deps.yaml
 
   # Tools / Codecs
   # ----------------------------------------------------------------------------
