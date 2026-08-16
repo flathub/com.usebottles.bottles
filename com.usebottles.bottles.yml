@@ -16,7 +16,7 @@ finish-args:
   - --socket=wayland
   - --socket=pulseaudio
   - --device=all
-  - --filesystem=xdg-data/umu:create
+  - --filesystem=~/.local/share/umu:create
   - --filesystem=~/Games/umu:create
   - --system-talk-name=org.freedesktop.UDisks2
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib/i386-linux-gnu
