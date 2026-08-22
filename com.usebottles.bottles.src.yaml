@@ -4,8 +4,8 @@ buildsystem: meson
 sources:
   - type: git
     url: https://github.com/bottlesdevs/Bottles
-    tag: '66.7'
-    commit: 26a13d16d5a54afc83092fb8f88a9b0df683a5d5
+    tag: '66.8'
+    commit: 466321cf8d5f0b156b8beb1c01b1b0b75a611884
     x-checker-data:
       type: git
       is-main-source: true
