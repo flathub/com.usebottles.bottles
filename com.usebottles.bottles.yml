@@ -19,8 +19,12 @@ finish-args:
   - --socket=wayland
   - --socket=pulseaudio
   - --device=all
+  - --filesystem=xdg-data/applications:create
   - --filesystem=xdg-data/umu:create
+  - --filesystem=xdg-data/Steam/compatibilitytools.d:create
   - --filesystem=~/Games/umu:create
+  - --filesystem=xdg-desktop:create
+  - --talk-name=org.freedesktop.secrets
   - --system-talk-name=org.freedesktop.UDisks2
   - --env=LD_LIBRARY_PATH=/usr/lib/extensions/vulkan/gamescope/lib:/app/lib/i386-linux-gnu/codecs-extra/lib:/app/lib:/app/lib/i386-linux-gnu
   - --env=PATH=/app/bin:/app/utils/bin:/usr/bin:/usr/lib/extensions/vulkan/MangoHud/bin/:/usr/bin:/usr/lib/extensions/vulkan/OBSVkCapture/bin/:/usr/lib/extensions/vulkan/gamescope/bin/
@@ -146,7 +150,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/VirusTotal/yara
-        tag: v4.5.5
+        tag: v4.5.8
+        commit: 84b0e3cc0e42f8f8e6b84d19c97ec3ac6ff8aee8
         x-checker-data:
           type: git
           tag-pattern: "^v([\\d.]+)$"
@@ -159,7 +164,8 @@ modules:
         sources:
           - type: git
             url: https://github.com/akheron/jansson
-            tag: v2.14.1
+            tag: v2.15.1
+            commit: dbb5fb3636e155fccfce4cd215de752779bd6971
             x-checker-data:
               type: git
               tag-pattern: "^v([\\d.]+)$"
@@ -189,8 +195,6 @@ modules:
   - name: vulkan-tools
     buildsystem: cmake-ninja
     config-opts:
-      - -DGLSLANG_INSTALL_DIR=/app
-      - -DVULKAN_HEADERS_INSTALL_DIR=/app
       - -DCMAKE_BUILD_TYPE=Release
     sources:
       - type: git
@@ -201,7 +205,7 @@ modules:
           type: git
           tag-pattern: ^sdk-([\d.]+)$
     modules:
-      - name: vulkan-tools
+      - name: vulkan-headers
         buildsystem: cmake-ninja
         sources:
           - type: git
@@ -211,6 +215,17 @@ modules:
             x-checker-data:
               type: git
               tag-pattern: ^sdk-([\d.]+)$
+
+  - name: xdpyinfo
+    buildsystem: autotools
+    sources:
+      - type: git
+        url: https://gitlab.freedesktop.org/xorg/app/xdpyinfo.git
+        tag: xdpyinfo-1.4.0
+        commit: 7fe49a22498b9438a15d5d9fdef55d5d832b1672
+        x-checker-data:
+          type: git
+          tag-pattern: ^xdpyinfo-([\d.]+)$
 
   # Libraries
   # ----------------------------------------------------------------------------
@@ -224,8 +239,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ImageMagick/ImageMagick
-        tag: 7.1.1-47
-        commit: 82572afc879b439cbf8c9c6f3a9ac7626adf98fb
+        tag: 7.1.2-34
+        commit: a0c4bf729a26a5c2feb28b0365b47a8db736078a
         x-checker-data:
           type: git
           tag-pattern: ^([\d.]+-[\d]+)$
@@ -241,8 +256,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/flatpak/libportal
-        tag: 0.9.1
-        commit: 8f5dc8d192f6e31dafe69e35219e3b707bde71ce
+        tag: 0.11.0
+        commit: fc4d62cfe131e8494c82f597f92b2234d584c367
         x-checker-data:
           type: git
           is-important: true
@@ -279,19 +294,25 @@ modules:
           is-important: true
           tag-pattern: ^([\d.]+)$
     modules:
+      - name: fast_float
+        buildsystem: cmake-ninja
+        sources:
+          - type: git
+            url: https://github.com/fastfloat/fast_float.git
+            tag: v8.0.2
+            commit: 50a80a73ab2ab256ba1c3bf86923ddd8b4202bc7
       - name: vte
         buildsystem: meson
         config-opts:
-          - -Ddocs=false
           - -Dvapi=false
         sources:
-          - type: git
-            url: https://gitlab.gnome.org/GNOME/vte
-            tag: 0.78.0
-            commit: 00c99e846bf83536f978b4fe5dc2c8a6983b8a94
+          - type: archive
+            url: https://download.gnome.org/sources/vte/0.84/vte-0.84.1.tar.xz
+            sha256: aca1caa8478aebcdbb1d67897fb3511eb7601debae6810e16a15b6fa25f31ac8
             x-checker-data:
-              type: git
-              tag-pattern: ^([\d.]+)$
+              type: gnome
+              name: vte
+              stable-only: true
 
   - name: runtime
     buildsystem: simple
